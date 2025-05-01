@@ -1,29 +1,79 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes projets - Lucas Deneumostier</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projets - Lucas Deneumostier</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      min-height: 100vh;
+    }
+
+    header, main, footer {
+      text-align: center;
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #FFD700;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 30px;
+    }
+
+    li {
+      margin-bottom: 15px;
+      font-size: 1.1em;
+    }
+
+    footer {
+      font-size: 0.9em;
+      color: #aaa;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Mes projets</h1>
-        <nav>
-            <a href="index.html">Accueil</a>
-            <a href="projets.html">Mes projets</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
-    <main>
-        <ul>
-            <li><strong>Portfolio EPHEC</strong> – Site web personnel hébergé sur GitHub Pages</li>
-            <li><strong>Projet Arduino</strong> – Contrôle de LED via capteur</li>
-            <li><strong>Maquette domotique</strong> – Gestion d’un appartement avec automate</li>
-        </ul>
-    </main>
-    <footer>
-        &copy; 2025 Lucas Deneumostier
-    </footer>
+
+  <header>
+    <h1>Mes projets</h1>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="projets.html">Projets</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <ul>
+      <li><strong>Portfolio EPHEC</strong> – Site personnel hébergé sur GitHub Pages</li>
+      <li><strong>Projet Arduino</strong> – Système de LED avec capteur de mouvement</li>
+      <li><strong>Maquette domotique</strong> – Simulation d’appartement automatisé</li>
+    </ul>
+  </main>
+
+  <footer>
+    &copy; 2025 Lucas Deneumostier
+  </footer>
+
 </body>
 </html>
