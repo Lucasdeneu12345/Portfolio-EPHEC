@@ -1,26 +1,80 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Lucas Deneumostier</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - Lucas Deneumostier</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      min-height: 100vh;
+    }
+
+    header, main, footer {
+      text-align: center;
+      padding: 20px;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+    }
+
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #FFD700;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    main p {
+      font-size: 1.1em;
+      margin: 20px auto;
+      max-width: 600px;
+    }
+
+    a.email {
+      color: #FFD700;
+      text-decoration: none;
+    }
+
+    a.email:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      font-size: 0.9em;
+      color: #aaa;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Contactez-moi</h1>
-        <nav>
-            <a href="index.html">Accueil</a>
-            <a href="projets.html">Mes projets</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
-    <main>
-        <p>Vous pouvez m’écrire à : <strong>lucas@deneumostier.be</strong></p>
-        <p>Ou visiter mon <a href="https://github.com/Lucasdeneu12345" target="_blank">GitHub</a>.</p>
-    </main>
-    <footer>
-        &copy; 2025 Lucas Deneumostier
-    </footer>
+
+  <header>
+    <h1>Contact</h1>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="projets.html">Projets</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <p>📧 Vous pouvez m’écrire à <a href="mailto:lucas@deneumostier.be" class="email">lucas@deneumostier.be</a></p>
+    <p>💼 Et me retrouver sur <a href="https://github.com/Lucasdeneu12345" class="email" target="_blank">mon GitHub</a></p>
+  </main>
+
+  <footer>
+    &copy; 2025 Lucas Deneumostier
+  </footer>
+
 </body>
 </html>
