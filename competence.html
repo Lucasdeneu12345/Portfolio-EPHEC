@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compétences - Lucas Deneumostier</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+    header {
+      text-align: center;
+      padding: 50px 20px;
+    }
+    header h1 {
+      font-size: 3em;
+      color: #FFD700;
+    }
+    header p {
+      font-size: 1.2em;
+      max-width: 600px;
+      margin: 20px auto;
+      color: #e0e0e0;
+    }
+    .skills-container {
+      position: relative;
+      padding: 50px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .skill-block {
+      position: sticky;
+      top: 100px;
+      background-color: #1c1c1e;
+      margin-bottom: 200px;
+      padding: 30px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+      transition: all 0.4s ease-in-out;
+    }
+    .skill-block.stacked {
+      z-index: 1;
+    }
+    .skill-text {
+      width: 55%;
+    }
+    .skill-text h2 {
+      color: #FFD700;
+      margin-bottom: 15px;
+    }
+    .skill-text p {
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+    .skill-img {
+      width: 40%;
+      display: flex;
+      justify-content: center;
+    }
+    .skill-img img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    }
+    @media (max-width: 768px) {
+      .skill-block {
+        flex-direction: column;
+        text-align: center;
+      }
+      .skill-text, .skill-img {
+        width: 100%;
+      }
+      .skill-img {
+        margin-top: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mes Compétences</h1>
+    <p>Un cocktail explosif de curiosité, de passion et de technicité, brassé avec du code et servi avec créativité 💥💻</p>
+  </header>
+
+  <section class="skills-container">
+    <div class="skill-block stacked">
+      <div class="skill-text">
+        <h2>Développement Web</h2>
+        <p>Création de sites web modernes en HTML, CSS, JavaScript et frameworks comme React. Responsive design, animations et UX au rendez-vous.</p>
+      </div>
+      <div class="skill-img">
+        <img src="webdev.jpg" alt="Développement Web">
+      </div>
+    </div>
+
+    <div class="skill-block stacked">
+      <div class="skill-text">
+        <h2>Programmation embarquée</h2>
+        <p>Utilisation de microcontrôleurs comme Arduino et ESP32 pour piloter des capteurs, actionneurs et créer des prototypes intelligents.</p>
+      </div>
+      <div class="skill-img">
+        <img src="arduino.jpg" alt="Programmation embarquée">
+      </div>
+    </div>
+
+    <div class="skill-block stacked">
+      <div class="skill-text">
+        <h2>Design UI/UX</h2>
+        <p>Conception d'interfaces intuitives et esthétiques, avec Figma ou Adobe XD. Maquettes, wireframes et tests utilisateurs intégrés dans le process.</p>
+      </div>
+      <div class="skill-img">
+        <img src="design.jpg" alt="Design UX UI">
+      </div>
+    </div>
+
+    <div class="skill-block stacked">
+      <div class="skill-text">
+        <h2>Gestion de projet agile</h2>
+        <p>Méthodes agiles (Scrum, Kanban), outils comme Trello, Notion et Git pour planifier, collaborer et livrer des projets dans les temps.</p>
+      </div>
+      <div class="skill-img">
+        <img src="agile.jpg" alt="Gestion agile">
+      </div>
+    </div>
+
+    <div class="skill-block stacked">
+      <div class="skill-text">
+        <h2>Électronique et prototypage</h2>
+        <p>Connaissance des composants électroniques, création de circuits imprimés simples, soudure, tests et debug matériel.</p>
+      </div>
+      <div class="skill-img">
+        <img src="electronique.jpg" alt="Électronique">
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Scroll reveal en JS simple (déjà géré avec sticky + stacking)
+    const skillBlocks = document.querySelectorAll('.skill-block');
+    let observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.3 });
+    skillBlocks.forEach(block => observer.observe(block));
+  </script>
+</body>
+</html>

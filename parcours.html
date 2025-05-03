@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parcours - Lucas Deneumostier</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #0f2027;
+      color: white;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 60px;
+      font-size: 2.8em;
+      color: #FFD700;
+    }
+    .timeline-container {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .timeline {
+      width: 45%;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      height: 100%;
+      width: 4px;
+      background-color: #FFD700;
+      transform: translateX(-50%);
+    }
+    .event {
+      position: relative;
+      margin: 50px 0;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s ease;
+    }
+    .event.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .event-content {
+      padding: 20px;
+      background-color: #1c1c1e;
+      border-left: 4px solid #FFD700;
+      position: relative;
+      border-radius: 8px;
+    }
+    .event-content::before {
+      content: attr(data-date);
+      position: absolute;
+      top: -15px;
+      left: 0;
+      transform: translateY(-100%);
+      font-size: 0.9em;
+      background-color: #FFD700;
+      color: #0f2027;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .timeline-left .event-content {
+      border-left: none;
+      border-right: 4px solid #FFD700;
+      text-align: right;
+    }
+    .timeline-left .event-content::before {
+      left: auto;
+      right: 0;
+    }
+
+    @media (max-width: 768px) {
+      .timeline-container {
+        flex-direction: column;
+      }
+      .timeline {
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .timeline::before {
+        display: none;
+      }
+      .timeline-left .event-content,
+      .timeline .event-content {
+        text-align: left;
+        border-left: 4px solid #FFD700;
+        border-right: none;
+      }
+      .timeline-left .event-content::before {
+        left: 0;
+        right: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Mon Parcours</h1>
+
+  <div class="timeline-container">
+    <!-- Études -->
+    <div class="timeline timeline-left">
+      <div class="event" data-aos>
+        <div class="event-content" data-date="2024">
+          <h3>EPHEC - Bachelier Informatique</h3>
+          <p>Développement full-stack, bases de données, réseaux et gestion de projet agile.</p>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-content" data-date="2021">
+          <h3>CEFA - Formation technique</h3>
+          <p>Introduction aux systèmes embarqués, bases de l’électronique et programmation.</p>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-content" data-date="2019">
+          <h3>Secondaire - Sciences appliquées</h3>
+          <p>Orientation scientifique avec accent sur la logique, mathématiques et physique.</p>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-content" data-date="2015">
+          <h3>École fondamentale</h3>
+          <p>Parcours scolaire classique avec passion naissante pour l’informatique.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Expérience pro -->
+    <div class="timeline timeline-right">
+      <div class="event">
+        <div class="event-content" data-date="2024">
+          <h3>Stage - Technivor</h3>
+          <p>Développement d’interfaces Web pour visualisation de données industrielles.</p>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-content" data-date="2023">
+          <h3>Job étudiant - Support IT</h3>
+          <p>Assistance aux utilisateurs, dépannage réseau, installation de matériel.</p>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-content" data-date="2022">
+          <h3>Projet freelance - Site vitrine</h3>
+          <p>Création d’un site web responsive pour un client local (HTML, CSS, JS).</p>
+        </div>
+      </div>
+      <div class="event">
+        <div class="event-content" data-date="2021">
+          <h3>Job étudiant - Inventoriste</h3>
+          <p>Mission ponctuelle dans la grande distribution pour des inventaires de stock.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Animation d’apparition au scroll
+    const events = document.querySelectorAll('.event');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.2
+    });
+
+    events.forEach(event => {
+      observer.observe(event);
+    });
+  </script>
+
+</body>
+</html>
