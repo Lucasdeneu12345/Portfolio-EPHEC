@@ -15,24 +15,10 @@
       scroll-behavior: smooth;
       overflow-x: hidden;
     }
-    header {
-      text-align: center;
-      padding: 50px 20px;
-    }
-    header h1 {
-      font-size: 3em;
-      color: #FFD700;
-    }
-    header p {
-      font-size: 1.2em;
-      max-width: 600px;
-      margin: 20px auto;
-      color: #e0e0e0;
-    }
     nav {
       text-align: center;
       padding: 10px 0;
-      background-color: rgba(15, 32, 39, 0.9);
+      background-color: #000;
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -45,6 +31,18 @@
     }
     nav a:hover {
       text-decoration: underline;
+    }
+    header {
+      text-align: center;
+      padding: 50px 20px 20px;
+    }
+    header h1 {
+      font-size: 3em;
+      color: #FFD700;
+    }
+    header p {
+      font-size: 1.2em;
+      color: #e0e0e0;
     }
     .photo {
       display: flex;
@@ -137,10 +135,6 @@
   </style>
 </head>
 <body>
-  <header>
-    <h1>Lucas Deneumostier</h1>
-    <p>Étudiant à l'EPHEC – Passionné de technologie</p>
-  </header>
 
   <nav>
     <a href="index.html">Accueil</a>
@@ -149,6 +143,11 @@
     <a href="competence.html">Compétences</a>
     <a href="parcours.html">Parcours</a>
   </nav>
+
+  <header>
+    <h1>Lucas Deneumostier</h1>
+    <p>Étudiant à l'EPHEC – Passionné de technologie</p>
+  </header>
 
   <div class="photo">
     <img src="Ma_photo.jpg" alt="Lucas Deneumostier">

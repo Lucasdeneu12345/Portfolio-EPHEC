@@ -14,9 +14,26 @@
       scroll-behavior: smooth;
       overflow-x: hidden;
     }
+    nav {
+      text-align: center;
+      padding: 10px 0;
+      background-color: #000;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: #FFD700;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
     header {
       text-align: center;
-      padding: 50px 20px;
+      padding: 50px 20px 20px;
     }
     header h1 {
       font-size: 3em;
@@ -86,6 +103,15 @@
   </style>
 </head>
 <body>
+
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="projets.html">Projets</a>
+    <a href="contact.html">Contact</a>
+    <a href="competence.html">Compétences</a>
+    <a href="parcours.html">Parcours</a>
+  </nav>
+
   <header>
     <h1>Mes Compétences</h1>
     <p>Un cocktail explosif de curiosité, de passion et de technicité, brassé avec du code et servi avec créativité 💥💻</p>
@@ -144,7 +170,6 @@
   </section>
 
   <script>
-    // Scroll reveal en JS simple (déjà géré avec sticky + stacking)
     const skillBlocks = document.querySelectorAll('.skill-block');
     let observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
@@ -155,5 +180,6 @@
     }, { threshold: 0.3 });
     skillBlocks.forEach(block => observer.observe(block));
   </script>
+
 </body>
 </html>

@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projets - Lucas Deneumostier</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -13,49 +12,41 @@
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: white;
       min-height: 100vh;
-      scroll-behavior: smooth;
     }
-
+    nav {
+      text-align: center;
+      padding: 10px 0;
+      background-color: #000;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav a {
+      color: #FFD700;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
     header, main, footer {
       text-align: center;
       padding: 20px;
     }
-
     header h1 {
       font-size: 2.5em;
-    }
-
-    nav a {
-      margin: 0 15px;
-      text-decoration: none;
       color: #FFD700;
-      font-weight: bold;
     }
-
-    nav a:hover {
-      text-decoration: underline;
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 30px;
     }
-
-    .carte-projet {
-      max-width: 800px;
-      margin: 40px auto;
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    li {
+      margin-bottom: 15px;
+      font-size: 1.1em;
     }
-
-    .carte-projet video,
-    .carte-projet img {
-      width: 100%;
-      border-radius: 10px;
-    }
-
-    .texte-projet {
-      margin-top: 15px;
-      text-align: left;
-    }
-
     footer {
       font-size: 0.9em;
       color: #aaa;
@@ -64,48 +55,30 @@
   </style>
 </head>
 <body>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="projets.html">Projets</a>
+    <a href="contact.html">Contact</a>
+    <a href="competence.html">Compétences</a>
+    <a href="parcours.html">Parcours</a>
+  </nav>
+
   <header>
     <h1>Mes projets</h1>
-    <nav>
-      <a href="index.html">Accueil</a>
-      <a href="projets.html">Projets</a>
-      <a href="contact.html">Contact</a>
-    </nav>
   </header>
 
   <main>
-    <div class="carte-projet" data-aos="fade-up">
-      <video src="demo.mp4" controls></video>
-      <div class="texte-projet">
-        <h3>Vidéo Démo</h3>
-        <p>Une démonstration vidéo d'un projet dynamique avec animations. Il met en avant ma capacité à créer une interface moderne et intuitive.</p>
-      </div>
-    </div>
-
-    <div class="carte-projet" data-aos="fade-right">
-      <img src="projet-photo1.jpg" alt="Projet Arduino">
-      <div class="texte-projet">
-        <h3>Projet Arduino</h3>
-        <p>Système de LED avec capteur de mouvement programmé avec Arduino. But : automatiser l'éclairage selon la présence.</p>
-      </div>
-    </div>
-
-    <div class="carte-projet" data-aos="fade-left">
-      <img src="projet-photo2.jpg" alt="Maquette Domotique">
-      <div class="texte-projet">
-        <h3>Maquette domotique</h3>
-        <p>Simulation d’un appartement automatisé avec gestion des volets, lumières et sécurité. Utilisation de capteurs et microcontrôleurs.</p>
-      </div>
-    </div>
+    <ul>
+      <li><strong>Portfolio EPHEC</strong> – Site personnel hébergé sur GitHub Pages</li>
+      <li><strong>Projet Arduino</strong> – Système de LED avec capteur de mouvement</li>
+      <li><strong>Maquette domotique</strong> – Simulation d’appartement automatisé</li>
+      <li><strong>Dashboard Node-RED</strong> – Interface connectée à un automate industriel</li>
+      <li><strong>Impression 3D</strong> – Création de pièces et prototypage rapide</li>
+    </ul>
   </main>
 
   <footer>
     &copy; 2025 Lucas Deneumostier
   </footer>
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
 </body>
 </html>
