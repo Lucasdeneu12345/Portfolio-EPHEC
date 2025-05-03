@@ -11,7 +11,6 @@
       font-family: 'Montserrat', sans-serif;
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: white;
-      overflow-x: hidden;
     }
 
     nav {
@@ -42,10 +41,10 @@
     }
 
     .timeline-container {
-      position: relative;
       max-width: 1200px;
       margin: auto;
       padding: 20px;
+      position: relative;
     }
 
     .timeline-line {
@@ -56,37 +55,28 @@
       width: 4px;
       background-color: #FFD700;
       transform: translateX(-50%);
+      z-index: 0;
     }
 
     .timeline-step {
       display: flex;
+      align-items: flex-start;
       justify-content: space-between;
-      margin: 120px 0;
+      margin: 80px 0;
       position: relative;
     }
 
-    .timeline-step .step-marker {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #FFD700;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      top: 10px;
-    }
-
     .step-title {
-      width: 40%;
-      padding-right: 30px;
-      text-align: right;
+      width: 45%;
+      display: flex;
+      justify-content: flex-end;
+      padding-right: 20px;
     }
 
     .sticky-box {
-      background-color: rgba(0, 0, 0, 0.7);
-      border-left: 4px solid #FFD700;
-      padding: 10px 15px;
-      margin-bottom: 10px;
+      background-color: #111;
+      border-left: 5px solid #FFD700;
+      padding: 12px 18px;
       border-radius: 6px;
       font-weight: bold;
       position: sticky;
@@ -100,17 +90,30 @@
     .timeline-step:nth-child(5) .sticky-box { top: 240px; }
 
     .step-content {
-      width: 55%;
+      width: 50%;
       background-color: rgba(255, 255, 255, 0.05);
       padding: 20px;
+      margin-left: 20px;
       border-radius: 8px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
       animation: fadeInRight 1s ease;
     }
 
+    .step-marker {
+      position: absolute;
+      left: 50%;
+      top: 20px;
+      width: 14px;
+      height: 14px;
+      background-color: #FFD700;
+      border-radius: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
     @keyframes fadeInRight {
       from { opacity: 0; transform: translateX(100px); }
-      to { opacity: 1; transform: translateX(0); }
+      to   { opacity: 1; transform: translateX(0); }
     }
 
     .values-section {
