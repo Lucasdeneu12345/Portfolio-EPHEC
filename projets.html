@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projets - Lucas Deneumostier</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: white;
-      min-height: 100vh;
+      scroll-behavior: smooth;
     }
     nav {
       text-align: center;
@@ -30,27 +31,73 @@
     nav a:hover {
       text-decoration: underline;
     }
-    header, main, footer {
+    header {
       text-align: center;
-      padding: 20px;
+      padding: 50px 20px 20px;
     }
     header h1 {
-      font-size: 2.5em;
+      font-size: 3em;
       color: #FFD700;
     }
-    ul {
-      list-style: none;
-      padding: 0;
-      margin-top: 30px;
+    .category-section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 30px 20px;
     }
-    li {
+    .category-section h2 {
+      color: #FFD700;
+      border-bottom: 2px solid #FFD700;
+      padding-bottom: 10px;
+      margin-bottom: 30px;
+    }
+    .project-card {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background-color: #1c1c1e;
+      margin-bottom: 40px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+    }
+    .project-card:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    .project-media {
+      width: 50%;
+    }
+    .project-media img,
+    .project-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .project-info {
+      padding: 30px;
+      width: 50%;
+    }
+    .project-info h3 {
       margin-bottom: 15px;
-      font-size: 1.1em;
+      color: #FFD700;
+    }
+    .project-info p {
+      font-size: 1.05em;
+      line-height: 1.6;
     }
     footer {
+      text-align: center;
+      padding: 20px;
       font-size: 0.9em;
       color: #aaa;
-      margin-top: 40px;
+    }
+    @media (max-width: 768px) {
+      .project-card {
+        flex-direction: column !important;
+      }
+      .project-media, .project-info {
+        width: 100%;
+      }
     }
   </style>
 </head>
@@ -67,18 +114,80 @@
     <h1>Mes projets</h1>
   </header>
 
-  <main>
-    <ul>
-      <li><strong>Portfolio EPHEC</strong> – Site personnel hébergé sur GitHub Pages</li>
-      <li><strong>Projet Arduino</strong> – Système de LED avec capteur de mouvement</li>
-      <li><strong>Maquette domotique</strong> – Simulation d’appartement automatisé</li>
-      <li><strong>Dashboard Node-RED</strong> – Interface connectée à un automate industriel</li>
-      <li><strong>Impression 3D</strong> – Création de pièces et prototypage rapide</li>
-    </ul>
-  </main>
+  <section class="category-section">
+    <h2>Informatique</h2>
+    <div class="project-card" data-aos="fade-right">
+      <div class="project-media">
+        <video src="video_demo.mp4" muted autoplay loop></video>
+      </div>
+      <div class="project-info">
+        <h3>Vidéo Démo</h3>
+        <p>Démonstration vidéo d'un projet d'interface moderne avec animations dynamiques et interactions utilisateurs.</p>
+      </div>
+    </div>
+
+    <div class="project-card" data-aos="fade-right">
+      <div class="project-media">
+        <img src="webapp.jpg" alt="Application Web">
+      </div>
+      <div class="project-info">
+        <h3>Application Web</h3>
+        <p>Site responsive en HTML/CSS/JS avec formulaire, base de données et déploiement sur serveur GitHub Pages.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="category-section">
+    <h2>Automatisation</h2>
+    <div class="project-card" data-aos="fade-right">
+      <div class="project-media">
+        <img src="arduino_project.jpg" alt="Projet Arduino">
+      </div>
+      <div class="project-info">
+        <h3>Projet Arduino</h3>
+        <p>Système de détection de mouvement avec LED et buzzer, piloté par microcontrôleur Arduino.</p>
+      </div>
+    </div>
+
+    <div class="project-card" data-aos="fade-right">
+      <div class="project-media">
+        <img src="domotique.jpg" alt="Domotique">
+      </div>
+      <div class="project-info">
+        <h3>Maquette domotique</h3>
+        <p>Simulation d’un appartement intelligent avec contrôle de l’éclairage, de la sécurité et des capteurs environnementaux.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="category-section">
+    <h2>Électromécanique</h2>
+    <div class="project-card" data-aos="fade-right">
+      <div class="project-media">
+        <img src="3dprint.jpg" alt="Impression 3D">
+      </div>
+      <div class="project-info">
+        <h3>Impression 3D</h3>
+        <p>Conception et impression de pièces fonctionnelles avec modélisation sous Fusion 360 et fabrication sur imprimante FLSUN.</p>
+      </div>
+    </div>
+
+    <div class="project-card" data-aos="fade-right">
+      <div class="project-media">
+        <video src="electro_demo.mp4" muted autoplay loop></video>
+      </div>
+      <div class="project-info">
+        <h3>Test de moteur triphasé</h3>
+        <p>Réalisation de tests de câblage, démarrage progressif, et mesure de tension/intensité sur installation industrielle.</p>
+      </div>
+    </div>
+  </section>
 
   <footer>
     &copy; 2025 Lucas Deneumostier
   </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
 </body>
 </html>
