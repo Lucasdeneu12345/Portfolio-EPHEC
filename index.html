@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lucas Deneumostier - Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -17,6 +18,7 @@
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: white;
       min-height: 100vh;
+      scroll-behavior: smooth;
     }
 
     header {
@@ -31,6 +33,11 @@
     nav {
       text-align: center;
       margin: 20px 0;
+      position: sticky;
+      top: 0;
+      background-color: rgba(15, 32, 39, 0.9);
+      padding: 10px 0;
+      z-index: 1000;
     }
 
     nav a {
@@ -65,11 +72,45 @@
       margin: auto;
     }
 
+    section.projet {
+      background: #1c1c1e;
+      padding: 60px 20px;
+    }
+
+    section.projet h2 {
+      text-align: center;
+      margin-bottom: 40px;
+      font-size: 2.5em;
+      color: #FFD700;
+    }
+
+    .carte-projet {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 60px;
+    }
+
+    .carte-projet video,
+    .carte-projet img {
+      max-width: 90%;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .texte-projet {
+      max-width: 700px;
+      text-align: left;
+      margin-top: 20px;
+      font-size: 1.1em;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
       font-size: 0.9em;
       color: #aaa;
+      background-color: #121212;
     }
   </style>
 </head>
@@ -91,13 +132,45 @@
   </div>
 
   <main>
-    <p>Bienvenue sur mon portfolio. Vous trouverez ici une sélection de mes projets, mes compétences, et comment me contacter.  
-    Mon objectif : créer des solutions concrètes avec la technologie. </p>
+    <p>Bienvenue sur mon portfolio. Vous trouverez ici une sélection de mes projets, mes compétences, et comment me contacter. Mon objectif : créer des solutions concrètes avec la technologie. </p>
   </main>
 
+  <section class="projet">
+    <h2>Mes projets en vedette</h2>
+
+    <div class="carte-projet" data-aos="fade-up">
+      <video src="demo.mp4" controls></video>
+      <div class="texte-projet">
+        <h3>Vidéo Démo</h3>
+        <p>Une démonstration vidéo d'un projet dynamique avec animations. Il met en avant ma capacité à créer une interface moderne et intuitive.</p>
+      </div>
+    </div>
+
+    <div class="carte-projet" data-aos="fade-right">
+      <img src="projet-photo1.jpg" alt="Projet 1">
+      <div class="texte-projet">
+        <h3>Application Web</h3>
+        <p>Développement d'une application web responsive avec HTML, CSS, JavaScript. Intégration de formulaires, de bases de données, et déploiement sur serveur.</p>
+      </div>
+    </div>
+
+    <div class="carte-projet" data-aos="fade-left">
+      <img src="projet-photo2.jpg" alt="Projet 2">
+      <div class="texte-projet">
+        <h3>Interface Utilisateur</h3>
+        <p>Création d’une interface fluide pour un tableau de bord de monitoring, utilisant des composants modernes et animations au scroll.</p>
+      </div>
+    </div>
+  </section>
+
   <footer>
-    &copy; 2025 Lucas Deneumostier – Tous droits réservés
+    &copy; 2025 Lucas Deneumostier – Tous droits réservés<br>
+    Contact : lucas.deneumostier@email.com
   </footer>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>

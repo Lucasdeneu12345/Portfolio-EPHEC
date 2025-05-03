@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Contact - Lucas Deneumostier</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -12,6 +13,7 @@
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: white;
       min-height: 100vh;
+      scroll-behavior: smooth;
     }
 
     header, main, footer {
@@ -67,7 +69,7 @@
     </nav>
   </header>
 
-  <main>
+  <main data-aos="fade-in">
     <p>📧 Vous pouvez m’écrire à <a href="mailto:lucas@deneumostier.be" class="email">lucas@deneumostier.be</a></p>
     <p>💼 Et me retrouver sur <a href="https://github.com/Lucasdeneu12345" class="email" target="_blank">mon GitHub</a></p>
   </main>
@@ -76,5 +78,9 @@
     &copy; 2025 Lucas Deneumostier
   </footer>
 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>
