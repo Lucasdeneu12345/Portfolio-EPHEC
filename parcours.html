@@ -46,51 +46,51 @@
       max-width: 1200px;
       margin: auto;
       padding: 20px;
+      display: flex;
+    }
+
+    .left-titles {
+      width: 40%;
+      position: relative;
     }
 
     .timeline-line {
       position: absolute;
-      left: 50%;
+      left: calc(50% - 2px);
       top: 0;
       bottom: 0;
       width: 4px;
       background-color: #FFD700;
-      transform: translateX(-50%);
     }
 
-    .timeline-step {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      margin: 120px 0;
-      position: relative;
+    .right-contents {
+      width: 60%;
     }
 
-    .timeline-step .step-marker {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #FFD700;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      top: 10px;
-    }
-
-    .step-title {
-      width: 40%;
-      padding-right: 30px;
-      text-align: right;
+    .sticky-title {
+      background-color: rgba(0, 0, 0, 0.7);
+      border-left: 4px solid #FFD700;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      border-radius: 6px;
       font-weight: bold;
       position: sticky;
-      top: 80px;
       z-index: 2;
     }
 
-    .timeline-step .step-content {
-      width: 55%;
+    .sticky-title:nth-child(1) { top: 80px; }
+    .sticky-title:nth-child(2) { top: 120px; }
+    .sticky-title:nth-child(3) { top: 160px; }
+    .sticky-title:nth-child(4) { top: 200px; }
+    .sticky-title:nth-child(5) { top: 240px; }
+
+    .timeline-step {
+      margin-bottom: 120px;
+    }
+
+    .step-content {
+      background-color: rgba(255, 255, 255, 0.05);
       padding: 20px;
-      background-color: rgba(255,255,255,0.05);
       border-radius: 8px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
       animation: fadeInRight 1s ease;
@@ -98,7 +98,7 @@
 
     @keyframes fadeInRight {
       from { opacity: 0; transform: translateX(100px); }
-      to   { opacity: 1; transform: translateX(0); }
+      to { opacity: 1; transform: translateX(0); }
     }
 
     .values-section {
@@ -134,103 +134,121 @@
       padding: 30px;
       font-size: 0.9em;
     }
+
+    @media (max-width: 768px) {
+      .timeline-container {
+        flex-direction: column;
+      }
+
+      .left-titles, .right-contents {
+        width: 100%;
+      }
+
+      .sticky-title {
+        position: static;
+        margin-bottom: 20px;
+      }
+
+      .timeline-line {
+        display: none;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html">Accueil</a>
-    <a href="projets.html">Projets</a>
-    <a href="contact.html">Contact</a>
-    <a href="competence.html">Compétences</a>
-    <a href="parcours.html">Parcours</a>
-  </nav>
+<nav>
+  <a href="index.html">Accueil</a>
+  <a href="projets.html">Projets</a>
+  <a href="contact.html">Contact</a>
+  <a href="competence.html">Compétences</a>
+  <a href="parcours.html">Parcours</a>
+</nav>
 
-  <h1>Mon Parcours</h1>
+<h1>Mon Parcours</h1>
 
-  <div class="timeline-container">
-    <div class="timeline-line"></div>
+<div class="timeline-container" id="timeline">
+  <div class="timeline-line"></div>
 
+  <div class="left-titles">
+    <div class="sticky-title">2015 – École fondamentale</div>
+    <div class="sticky-title">2019 – Sciences appliquées</div>
+    <div class="sticky-title">2021 – CEFA Technique</div>
+    <div class="sticky-title">2024 – EPHEC Informatique</div>
+    <div class="sticky-title">2024 – Stage Technivor</div>
+  </div>
+
+  <div class="right-contents">
     <div class="timeline-step">
-      <div class="step-marker"></div>
-      <div class="step-title">2015 – École fondamentale</div>
       <div class="step-content">
         <p>Découverte du monde scolaire, début de l’intérêt pour la technologie et l’informatique.</p>
       </div>
     </div>
 
     <div class="timeline-step">
-      <div class="step-marker"></div>
-      <div class="step-title">2019 – Sciences appliquées</div>
       <div class="step-content">
         <p>Orientation scientifique, développement des compétences logiques, en physique et mathématiques.</p>
       </div>
     </div>
 
     <div class="timeline-step">
-      <div class="step-marker"></div>
-      <div class="step-title">2021 – CEFA Technique</div>
       <div class="step-content">
         <p>Formation technique, projets concrets en électronique et systèmes embarqués.</p>
       </div>
     </div>
 
     <div class="timeline-step">
-      <div class="step-marker"></div>
-      <div class="step-title">2024 – EPHEC Informatique</div>
       <div class="step-content">
         <p>Bachelier en informatique, projets Web, API, bases de données, UX/UI, stage en entreprise.</p>
       </div>
     </div>
 
     <div class="timeline-step">
-      <div class="step-marker"></div>
-      <div class="step-title">2024 – Stage Technivor</div>
       <div class="step-content">
         <p>Développement d’un dashboard connecté à un automate via Node-RED et MQTT.</p>
       </div>
     </div>
   </div>
+</div>
 
-  <div class="values-section" id="valuesSection">
-    <h1 style="text-align: center; color: #FFD700; margin-bottom: 40px;">Valeurs acquises</h1>
+<div class="values-section" id="valuesSection">
+  <h1 style="text-align: center; color: #FFD700; margin-bottom: 40px;">Valeurs acquises</h1>
 
-    <div class="value-block">
-      <h2>Créativité</h2>
-      <p>Imaginer des solutions techniques nouvelles dans des contextes concrets (projets web, électronique, etc.).</p>
-    </div>
-
-    <div class="value-block">
-      <h2>Sérieux</h2>
-      <p>Travail rigoureux, respect des consignes, gestion de projet et autonomie renforcée.</p>
-    </div>
-
-    <div class="value-block">
-      <h2>Bienveillance</h2>
-      <p>Collaboration avec les équipes, bonne communication et respect dans les projets collectifs.</p>
-    </div>
-
-    <div class="value-block">
-      <h2>Ambition</h2>
-      <p>Volonté constante d’apprendre et de progresser à chaque étape de mon parcours.</p>
-    </div>
+  <div class="value-block">
+    <h2>Créativité</h2>
+    <p>Imaginer des solutions techniques nouvelles dans des contextes concrets (projets web, électronique, etc.).</p>
   </div>
 
-  <footer>&copy; 2025 Lucas Deneumostier</footer>
+  <div class="value-block">
+    <h2>Sérieux</h2>
+    <p>Travail rigoureux, respect des consignes, gestion de projet et autonomie renforcée.</p>
+  </div>
 
-  <script>
-    // Animation des valeurs acquises
-    const valueBlocks = document.querySelectorAll('.value-block');
-    const valueObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, { threshold: 0.3 });
+  <div class="value-block">
+    <h2>Bienveillance</h2>
+    <p>Collaboration avec les équipes, bonne communication et respect dans les projets collectifs.</p>
+  </div>
 
-    valueBlocks.forEach(block => valueObserver.observe(block));
-  </script>
+  <div class="value-block">
+    <h2>Ambition</h2>
+    <p>Volonté constante d’apprendre et de progresser à chaque étape de mon parcours.</p>
+  </div>
+</div>
+
+<footer>&copy; 2025 Lucas Deneumostier</footer>
+
+<script>
+  const valueBlocks = document.querySelectorAll('.value-block');
+  const valueObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.3 });
+
+  valueBlocks.forEach(block => valueObserver.observe(block));
+</script>
 
 </body>
 </html>
