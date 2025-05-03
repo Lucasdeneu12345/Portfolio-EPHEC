@@ -41,24 +41,6 @@
       color: #FFD700;
     }
 
-    .sticky-stack {
-      position: fixed;
-      top: 60px;
-      left: 5%;
-      width: 250px;
-      z-index: 999;
-    }
-
-    .sticky-item {
-      background-color: rgba(0,0,0,0.7);
-      border-left: 4px solid #FFD700;
-      padding: 10px 15px;
-      margin-bottom: 8px;
-      border-radius: 6px;
-      font-weight: bold;
-      display: none;
-    }
-
     .timeline-container {
       position: relative;
       max-width: 1200px;
@@ -95,12 +77,14 @@
       top: 10px;
     }
 
-    .timeline-step .step-title {
+    .step-title {
       width: 40%;
-      text-align: right;
       padding-right: 30px;
+      text-align: right;
       font-weight: bold;
-      opacity: 0;
+      position: sticky;
+      top: 80px;
+      z-index: 2;
     }
 
     .timeline-step .step-content {
@@ -117,23 +101,38 @@
       to   { opacity: 1; transform: translateX(0); }
     }
 
-    @media (max-width: 768px) {
-      .timeline-step {
-        flex-direction: column;
-        align-items: center;
-      }
+    .values-section {
+      max-width: 900px;
+      margin: 100px auto;
+      padding: 20px;
+    }
 
-      .timeline-step .step-title,
-      .timeline-step .step-content {
-        width: 90%;
-        text-align: left;
-        padding: 10px 0;
-      }
+    .value-block {
+      margin-bottom: 50px;
+      padding: 30px;
+      background-color: #1c1c1e;
+      border-left: 6px solid #FFD700;
+      border-radius: 10px;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: all 0.8s ease;
+    }
 
-      .sticky-stack {
-        left: 10px;
-        width: auto;
-      }
+    .value-block.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .value-block h2 {
+      color: #FFD700;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      color: #999;
+      padding: 30px;
+      font-size: 0.9em;
     }
   </style>
 </head>
@@ -149,12 +148,10 @@
 
   <h1>Mon Parcours</h1>
 
-  <div class="sticky-stack" id="stickyStack"></div>
-
   <div class="timeline-container">
     <div class="timeline-line"></div>
 
-    <div class="timeline-step" data-title="2015 – École fondamentale">
+    <div class="timeline-step">
       <div class="step-marker"></div>
       <div class="step-title">2015 – École fondamentale</div>
       <div class="step-content">
@@ -162,7 +159,7 @@
       </div>
     </div>
 
-    <div class="timeline-step" data-title="2019 – Sciences appliquées">
+    <div class="timeline-step">
       <div class="step-marker"></div>
       <div class="step-title">2019 – Sciences appliquées</div>
       <div class="step-content">
@@ -170,7 +167,7 @@
       </div>
     </div>
 
-    <div class="timeline-step" data-title="2021 – CEFA Technique">
+    <div class="timeline-step">
       <div class="step-marker"></div>
       <div class="step-title">2021 – CEFA Technique</div>
       <div class="step-content">
@@ -178,7 +175,7 @@
       </div>
     </div>
 
-    <div class="timeline-step" data-title="2024 – EPHEC Informatique">
+    <div class="timeline-step">
       <div class="step-marker"></div>
       <div class="step-title">2024 – EPHEC Informatique</div>
       <div class="step-content">
@@ -186,7 +183,7 @@
       </div>
     </div>
 
-    <div class="timeline-step" data-title="2024 – Stage Technivor">
+    <div class="timeline-step">
       <div class="step-marker"></div>
       <div class="step-title">2024 – Stage Technivor</div>
       <div class="step-content">
@@ -194,7 +191,8 @@
       </div>
     </div>
   </div>
-  <div class="values-section" id="valuesSection" style="max-width: 900px; margin: 100px auto; padding: 20px;">
+
+  <div class="values-section" id="valuesSection">
     <h1 style="text-align: center; color: #FFD700; margin-bottom: 40px;">Valeurs acquises</h1>
 
     <div class="value-block">
@@ -218,57 +216,20 @@
     </div>
   </div>
 
-  <footer style="text-align:center; color:#aaa; padding:30px;">&copy; 2025 Lucas Deneumostier</footer>
+  <footer>&copy; 2025 Lucas Deneumostier</footer>
 
   <script>
-    const steps = document.querySelectorAll('.timeline-step');
-    const stickyStack = document.getElementById('stickyStack');
-    const shownTitles = new Set();
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        const title = entry.target.getAttribute('data-title');
-        if (entry.isIntersecting && !shownTitles.has(title)) {
-          const div = document.createElement('div');
-          div.classList.add('sticky-item');
-          div.textContent = title;
-          stickyStack.appendChild(div);
-          setTimeout(() => div.style.display = 'block', 100);
-          shownTitles.add(title);
-        }
-      });
-    }, { threshold: 0.5 });
-
-    steps.forEach(step => observer.observe(step));
-
-    const valuesSection = document.getElementById('valuesSection');
-    const hideStack = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          stickyStack.innerHTML = '';
-          shownTitles.clear();
-        }
-      });
-    }, { threshold: 0.2 });
-
-    hideStack.observe(valuesSection);
-
     // Animation des valeurs acquises
     const valueBlocks = document.querySelectorAll('.value-block');
     const valueObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.style.opacity = 1;
-          entry.target.style.transform = 'translateY(0)';
+          entry.target.classList.add('visible');
         }
       });
     }, { threshold: 0.3 });
 
-    valueBlocks.forEach(block => {
-      block.style.opacity = 0;
-      block.style.transform = 'translateY(50px)';
-      valueObserver.observe(block);
-    });
+    valueBlocks.forEach(block => valueObserver.observe(block));
   </script>
 
 </body>
