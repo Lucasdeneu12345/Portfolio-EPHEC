@@ -2,127 +2,144 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Parcours - Lucas Deneumostier</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
     body {
+      margin: 0;
       font-family: 'Montserrat', sans-serif;
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: white;
-      line-height: 1.6;
+      overflow-x: hidden;
     }
+
     nav {
+      background-color: #000;
       text-align: center;
       padding: 10px 0;
-      background-color: #000;
       position: sticky;
       top: 0;
       z-index: 1000;
     }
+
     nav a {
       color: #FFD700;
       margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
     }
+
     nav a:hover {
       text-decoration: underline;
     }
+
     h1 {
       text-align: center;
       margin: 60px 0 40px;
       font-size: 2.8em;
       color: #FFD700;
     }
+
     .timeline-container {
-      display: flex;
-      justify-content: space-between;
       position: relative;
-      max-width: 1200px;
+      max-width: 1000px;
       margin: auto;
       padding: 20px;
     }
-    .timeline {
-      width: 45%;
-      position: relative;
-    }
-    .timeline::before {
-      content: '';
+
+    .timeline-line {
       position: absolute;
       left: 50%;
       top: 0;
-      height: 100%;
+      bottom: 0;
       width: 4px;
       background-color: #FFD700;
       transform: translateX(-50%);
     }
-    .event {
+
+    .timeline-step {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin: 150px 0;
       position: relative;
-      margin: 50px 0;
+    }
+
+    .timeline-step .pin-title {
+      position: sticky;
+      top: 80px;
+      width: 45%;
+      padding: 10px 20px;
+      font-size: 1.3em;
+      font-weight: bold;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-left: 4px solid #FFD700;
+      border-radius: 8px;
+    }
+
+    .timeline-step .step-content {
+      width: 50%;
+      padding: 20px;
+      background-color: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      animation: fadeInRight 1s ease;
+    }
+
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translateX(100px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+
+    .values-section {
+      max-width: 900px;
+      margin: 100px auto;
+      padding: 20px;
+    }
+
+    .value-block {
+      margin-bottom: 50px;
+      padding: 30px;
+      background-color: #1c1c1e;
+      border-left: 6px solid #FFD700;
+      border-radius: 10px;
       opacity: 0;
-      transform: translateY(40px);
+      transform: translateY(50px);
       transition: all 0.8s ease;
     }
-    .event.visible {
+
+    .value-block.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    .event-content {
-      padding: 20px;
-      background-color: #1c1c1e;
-      border-left: 4px solid #FFD700;
-      position: relative;
-      border-radius: 8px;
+
+    .value-block h2 {
+      color: #FFD700;
+      margin-bottom: 10px;
     }
-    .event-content::before {
-      content: attr(data-date);
-      position: absolute;
-      top: -15px;
-      left: 0;
-      transform: translateY(-100%);
+
+    footer {
+      text-align: center;
+      color: #999;
+      padding: 30px;
       font-size: 0.9em;
-      background-color: #FFD700;
-      color: #0f2027;
-      padding: 4px 8px;
-      border-radius: 4px;
-      font-weight: bold;
     }
-    .timeline-left .event-content {
-      border-left: none;
-      border-right: 4px solid #FFD700;
-      text-align: right;
-    }
-    .timeline-left .event-content::before {
-      left: auto;
-      right: 0;
-    }
+
     @media (max-width: 768px) {
-      .timeline-container {
+      .timeline-step {
         flex-direction: column;
+        align-items: center;
       }
-      .timeline {
+
+      .timeline-step .pin-title, .timeline-step .step-content {
         width: 100%;
-        padding-left: 20px;
-        padding-right: 20px;
+        margin-bottom: 20px;
       }
-      .timeline::before {
-        display: none;
-      }
-      .timeline-left .event-content,
-      .timeline .event-content {
-        text-align: left;
-        border-left: 4px solid #FFD700;
-        border-right: none;
-      }
-      .timeline-left .event-content::before {
-        left: 0;
-        right: auto;
+
+      .timeline-line {
+        left: 10px;
+        transform: none;
       }
     }
   </style>
@@ -140,75 +157,83 @@
   <h1>Mon Parcours</h1>
 
   <div class="timeline-container">
-    <!-- Études -->
-    <div class="timeline timeline-left">
-      <div class="event">
-        <div class="event-content" data-date="2024">
-          <h3>EPHEC - Bachelier Informatique</h3>
-          <p>Développement full-stack, bases de données, réseaux et gestion de projet agile.</p>
-        </div>
-      </div>
-      <div class="event">
-        <div class="event-content" data-date="2021">
-          <h3>CEFA - Formation technique</h3>
-          <p>Introduction aux systèmes embarqués, bases de l’électronique et programmation.</p>
-        </div>
-      </div>
-      <div class="event">
-        <div class="event-content" data-date="2019">
-          <h3>Secondaire - Sciences appliquées</h3>
-          <p>Orientation scientifique avec accent sur la logique, mathématiques et physique.</p>
-        </div>
-      </div>
-      <div class="event">
-        <div class="event-content" data-date="2015">
-          <h3>École fondamentale</h3>
-          <p>Parcours scolaire classique avec passion naissante pour l’informatique.</p>
-        </div>
+    <div class="timeline-line"></div>
+
+    <div class="timeline-step">
+      <div class="pin-title">2015 – École fondamentale</div>
+      <div class="step-content">
+        <p>Premiers pas dans un environnement éducatif, découverte de l’informatique et esprit curieux en développement.</p>
       </div>
     </div>
 
-    <!-- Expériences pro -->
-    <div class="timeline timeline-right">
-      <div class="event">
-        <div class="event-content" data-date="2024">
-          <h3>Stage - Technivor</h3>
-          <p>Développement d’interfaces Web pour visualisation de données industrielles.</p>
-        </div>
+    <div class="timeline-step">
+      <div class="pin-title">2019 – Secondaire : Sciences appliquées</div>
+      <div class="step-content">
+        <p>Approfondissement des sciences, logique, mathématiques et premières expériences en électronique.</p>
       </div>
-      <div class="event">
-        <div class="event-content" data-date="2023">
-          <h3>Job étudiant - Support IT</h3>
-          <p>Assistance aux utilisateurs, dépannage réseau, installation de matériel.</p>
-        </div>
+    </div>
+
+    <div class="timeline-step">
+      <div class="pin-title">2021 – CEFA : Formation technique</div>
+      <div class="step-content">
+        <p>Étude des bases de l’électronique, de la programmation embarquée et projets Arduino.</p>
       </div>
-      <div class="event">
-        <div class="event-content" data-date="2022">
-          <h3>Projet freelance - Site vitrine</h3>
-          <p>Création d’un site web responsive pour un client local (HTML, CSS, JS).</p>
-        </div>
+    </div>
+
+    <div class="timeline-step">
+      <div class="pin-title">2024 – EPHEC : Bachelier en Informatique</div>
+      <div class="step-content">
+        <p>Développement web, gestion de bases de données, projets concrets en full-stack et stage en entreprise.</p>
       </div>
-      <div class="event">
-        <div class="event-content" data-date="2021">
-          <h3>Job étudiant - Inventoriste</h3>
-          <p>Mission ponctuelle dans la grande distribution pour des inventaires de stock.</p>
-        </div>
+    </div>
+
+    <div class="timeline-step">
+      <div class="pin-title">2024 – Stage chez Technivor</div>
+      <div class="step-content">
+        <p>Développement d’un tableau de bord connecté, analyse de flux de données, intégration industrielle avec Node-RED.</p>
       </div>
     </div>
   </div>
 
+  <div class="values-section">
+    <h1 style="text-align: center; color: #FFD700; margin-bottom: 40px;">Valeurs acquises</h1>
+
+    <div class="value-block">
+      <h2>Créativité</h2>
+      <p>Capacité à créer des solutions nouvelles et originales. Innovation dans les projets Web, électroniques ou embarqués.</p>
+    </div>
+
+    <div class="value-block">
+      <h2>Sérieux</h2>
+      <p>Rigueur dans la gestion de projet, suivi méthodique et professionnalisme dans toutes les tâches confiées.</p>
+    </div>
+
+    <div class="value-block">
+      <h2>Bienveillance</h2>
+      <p>Travail en équipe, respect des autres et collaboration positive dans un esprit constructif.</p>
+    </div>
+
+    <div class="value-block">
+      <h2>Ambition</h2>
+      <p>Volonté constante d’apprendre, d’évoluer et de viser l’excellence dans tous les domaines techniques abordés.</p>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Lucas Deneumostier
+  </footer>
+
   <script>
-    const events = document.querySelectorAll('.event');
-    const observer = new IntersectionObserver((entries) => {
+    const blocks = document.querySelectorAll('.value-block');
+    const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
         }
       });
-    }, {
-      threshold: 0.2
-    });
-    events.forEach(event => observer.observe(event));
+    }, { threshold: 0.3 });
+
+    blocks.forEach(block => observer.observe(block));
   </script>
 
 </body>
