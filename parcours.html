@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Parcours - Lucas Deneumostier</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -41,17 +41,15 @@
       color: #FFD700;
     }
 
-    .sticky-titles {
+    .sticky-stack {
       position: fixed;
-      top: 50px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 90%;
-      max-width: 600px;
+      top: 60px;
+      left: 5%;
+      width: 250px;
       z-index: 999;
     }
 
-    .sticky-titles .sticky-item {
+    .sticky-item {
       background-color: rgba(0,0,0,0.7);
       border-left: 4px solid #FFD700;
       padding: 10px 15px;
@@ -63,7 +61,7 @@
 
     .timeline-container {
       position: relative;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: auto;
       padding: 20px;
     }
@@ -82,7 +80,7 @@
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      margin: 150px 0;
+      margin: 120px 0;
       position: relative;
     }
 
@@ -97,8 +95,16 @@
       top: 10px;
     }
 
+    .timeline-step .step-title {
+      width: 40%;
+      text-align: right;
+      padding-right: 30px;
+      font-weight: bold;
+      opacity: 0;
+    }
+
     .timeline-step .step-content {
-      width: 45%;
+      width: 55%;
       padding: 20px;
       background-color: rgba(255,255,255,0.05);
       border-radius: 8px;
@@ -106,67 +112,27 @@
       animation: fadeInRight 1s ease;
     }
 
-    .timeline-step:nth-child(even) .step-content {
-      margin-left: 55%;
-    }
-
-    .timeline-step:nth-child(odd) .step-content {
-      margin-right: 55%;
-    }
-
     @keyframes fadeInRight {
       from { opacity: 0; transform: translateX(100px); }
       to   { opacity: 1; transform: translateX(0); }
     }
 
-    .values-section {
-      max-width: 900px;
-      margin: 100px auto;
-      padding: 20px;
-    }
-
-    .value-block {
-      margin-bottom: 50px;
-      padding: 30px;
-      background-color: #1c1c1e;
-      border-left: 6px solid #FFD700;
-      border-radius: 10px;
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.8s ease;
-    }
-
-    .value-block.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .value-block h2 {
-      color: #FFD700;
-      margin-bottom: 10px;
-    }
-
-    footer {
-      text-align: center;
-      color: #999;
-      padding: 30px;
-      font-size: 0.9em;
-    }
-
     @media (max-width: 768px) {
+      .timeline-step {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .timeline-step .step-title,
       .timeline-step .step-content {
-        width: 100%;
-        margin: auto;
+        width: 90%;
+        text-align: left;
+        padding: 10px 0;
       }
 
-      .timeline-step:nth-child(even) .step-content,
-      .timeline-step:nth-child(odd) .step-content {
-        margin: auto;
-      }
-
-      .sticky-titles {
-        width: 95%;
-        top: 60px;
+      .sticky-stack {
+        left: 10px;
+        width: auto;
       }
     }
   </style>
@@ -183,80 +149,80 @@
 
   <h1>Mon Parcours</h1>
 
-  <div class="sticky-titles" id="stickyContainer"></div>
+  <div class="sticky-stack" id="stickyStack"></div>
 
   <div class="timeline-container">
     <div class="timeline-line"></div>
 
     <div class="timeline-step" data-title="2015 – École fondamentale">
       <div class="step-marker"></div>
+      <div class="step-title">2015 – École fondamentale</div>
       <div class="step-content">
-        <p>Premiers pas dans l’éducation, découverte de l’informatique et intérêt pour la technologie.</p>
+        <p>Découverte du monde scolaire, début de l’intérêt pour la technologie et l’informatique.</p>
       </div>
     </div>
 
     <div class="timeline-step" data-title="2019 – Sciences appliquées">
       <div class="step-marker"></div>
+      <div class="step-title">2019 – Sciences appliquées</div>
       <div class="step-content">
-        <p>Logique, mathématiques, physique : consolidation de compétences analytiques et techniques.</p>
+        <p>Orientation scientifique, développement des compétences logiques, en physique et mathématiques.</p>
       </div>
     </div>
 
-    <div class="timeline-step" data-title="2021 – CEFA : Technique embarquée">
+    <div class="timeline-step" data-title="2021 – CEFA Technique">
       <div class="step-marker"></div>
+      <div class="step-title">2021 – CEFA Technique</div>
       <div class="step-content">
-        <p>Formation technique : électronique, microcontrôleurs, Arduino, projets pratiques.</p>
+        <p>Formation technique, projets concrets en électronique et systèmes embarqués.</p>
       </div>
     </div>
 
-    <div class="timeline-step" data-title="2024 – EPHEC : Informatique">
+    <div class="timeline-step" data-title="2024 – EPHEC Informatique">
       <div class="step-marker"></div>
+      <div class="step-title">2024 – EPHEC Informatique</div>
       <div class="step-content">
-        <p>Développement Web, bases de données, API, UI/UX, sécurité, méthodes agiles et stage en entreprise.</p>
+        <p>Bachelier en informatique, projets Web, API, bases de données, UX/UI, stage en entreprise.</p>
       </div>
     </div>
 
-    <div class="timeline-step" data-title="2024 – Stage chez Technivor">
+    <div class="timeline-step" data-title="2024 – Stage Technivor">
       <div class="step-marker"></div>
+      <div class="step-title">2024 – Stage Technivor</div>
       <div class="step-content">
-        <p>Conception d’un tableau de bord connecté à un automate industriel via Node-RED, MQTT et serveur local.</p>
+        <p>Développement d’un dashboard connecté à un automate via Node-RED et MQTT.</p>
       </div>
     </div>
   </div>
-
-  <div class="values-section">
+  <div class="values-section" id="valuesSection" style="max-width: 900px; margin: 100px auto; padding: 20px;">
     <h1 style="text-align: center; color: #FFD700; margin-bottom: 40px;">Valeurs acquises</h1>
 
     <div class="value-block">
       <h2>Créativité</h2>
-      <p>Capacité à créer des solutions originales et efficaces dans des contextes variés.</p>
+      <p>Imaginer des solutions techniques nouvelles dans des contextes concrets (projets web, électronique, etc.).</p>
     </div>
 
     <div class="value-block">
       <h2>Sérieux</h2>
-      <p>Engagement rigoureux dans chaque projet, respect des délais, organisation claire.</p>
+      <p>Travail rigoureux, respect des consignes, gestion de projet et autonomie renforcée.</p>
     </div>
 
     <div class="value-block">
       <h2>Bienveillance</h2>
-      <p>Esprit d’équipe, collaboration et entraide dans tous les contextes professionnels et académiques.</p>
+      <p>Collaboration avec les équipes, bonne communication et respect dans les projets collectifs.</p>
     </div>
 
     <div class="value-block">
       <h2>Ambition</h2>
-      <p>Volonté d’évoluer en permanence, de progresser et de viser des projets de plus en plus ambitieux.</p>
+      <p>Volonté constante d’apprendre et de progresser à chaque étape de mon parcours.</p>
     </div>
   </div>
 
-  <footer>
-    &copy; 2025 Lucas Deneumostier
-  </footer>
+  <footer style="text-align:center; color:#aaa; padding:30px;">&copy; 2025 Lucas Deneumostier</footer>
 
   <script>
-    // Sticky pile
     const steps = document.querySelectorAll('.timeline-step');
-    const stickyContainer = document.getElementById('stickyContainer');
-
+    const stickyStack = document.getElementById('stickyStack');
     const shownTitles = new Set();
 
     const observer = new IntersectionObserver(entries => {
@@ -264,41 +230,45 @@
         const title = entry.target.getAttribute('data-title');
         if (entry.isIntersecting && !shownTitles.has(title)) {
           const div = document.createElement('div');
-          div.textContent = title;
           div.classList.add('sticky-item');
-          stickyContainer.appendChild(div);
+          div.textContent = title;
+          stickyStack.appendChild(div);
           setTimeout(() => div.style.display = 'block', 100);
           shownTitles.add(title);
         }
       });
-    }, { threshold: 0.4 });
+    }, { threshold: 0.5 });
 
     steps.forEach(step => observer.observe(step));
 
-    // Remove stack at end
-    const valuesSection = document.querySelector('.values-section');
-    const hideObserver = new IntersectionObserver(entries => {
+    const valuesSection = document.getElementById('valuesSection');
+    const hideStack = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          stickyContainer.innerHTML = '';
+          stickyStack.innerHTML = '';
           shownTitles.clear();
         }
       });
     }, { threshold: 0.2 });
 
-    hideObserver.observe(valuesSection);
+    hideStack.observe(valuesSection);
 
-    // Values animation
-    const values = document.querySelectorAll('.value-block');
+    // Animation des valeurs acquises
+    const valueBlocks = document.querySelectorAll('.value-block');
     const valueObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
         }
       });
     }, { threshold: 0.3 });
 
-    values.forEach(block => valueObserver.observe(block));
+    valueBlocks.forEach(block => {
+      block.style.opacity = 0;
+      block.style.transform = 'translateY(50px)';
+      valueObserver.observe(block);
+    });
   </script>
 
 </body>
