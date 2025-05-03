@@ -46,28 +46,43 @@
       max-width: 1200px;
       margin: auto;
       padding: 20px;
-      display: flex;
-    }
-
-    .left-titles {
-      width: 40%;
-      position: relative;
     }
 
     .timeline-line {
       position: absolute;
-      left: calc(50% - 2px);
+      left: 50%;
       top: 0;
       bottom: 0;
       width: 4px;
       background-color: #FFD700;
+      transform: translateX(-50%);
     }
 
-    .right-contents {
-      width: 60%;
+    .timeline-step {
+      display: flex;
+      justify-content: space-between;
+      margin: 120px 0;
+      position: relative;
     }
 
-    .sticky-title {
+    .timeline-step .step-marker {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #FFD700;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      top: 10px;
+    }
+
+    .step-title {
+      width: 40%;
+      padding-right: 30px;
+      text-align: right;
+    }
+
+    .sticky-box {
       background-color: rgba(0, 0, 0, 0.7);
       border-left: 4px solid #FFD700;
       padding: 10px 15px;
@@ -78,17 +93,14 @@
       z-index: 2;
     }
 
-    .sticky-title:nth-child(1) { top: 80px; }
-    .sticky-title:nth-child(2) { top: 120px; }
-    .sticky-title:nth-child(3) { top: 160px; }
-    .sticky-title:nth-child(4) { top: 200px; }
-    .sticky-title:nth-child(5) { top: 240px; }
-
-    .timeline-step {
-      margin-bottom: 120px;
-    }
+    .timeline-step:nth-child(1) .sticky-box { top: 80px; }
+    .timeline-step:nth-child(2) .sticky-box { top: 120px; }
+    .timeline-step:nth-child(3) .sticky-box { top: 160px; }
+    .timeline-step:nth-child(4) .sticky-box { top: 200px; }
+    .timeline-step:nth-child(5) .sticky-box { top: 240px; }
 
     .step-content {
+      width: 55%;
       background-color: rgba(255, 255, 255, 0.05);
       padding: 20px;
       border-radius: 8px;
@@ -134,25 +146,6 @@
       padding: 30px;
       font-size: 0.9em;
     }
-
-    @media (max-width: 768px) {
-      .timeline-container {
-        flex-direction: column;
-      }
-
-      .left-titles, .right-contents {
-        width: 100%;
-      }
-
-      .sticky-title {
-        position: static;
-        margin-bottom: 20px;
-      }
-
-      .timeline-line {
-        display: none;
-      }
-    }
   </style>
 </head>
 <body>
@@ -167,47 +160,37 @@
 
 <h1>Mon Parcours</h1>
 
-<div class="timeline-container" id="timeline">
+<div class="timeline-container">
   <div class="timeline-line"></div>
 
-  <div class="left-titles">
-    <div class="sticky-title">2015 – École fondamentale</div>
-    <div class="sticky-title">2019 – Sciences appliquées</div>
-    <div class="sticky-title">2021 – CEFA Technique</div>
-    <div class="sticky-title">2024 – EPHEC Informatique</div>
-    <div class="sticky-title">2024 – Stage Technivor</div>
+  <div class="timeline-step">
+    <div class="step-marker"></div>
+    <div class="step-title"><div class="sticky-box">2015 – École fondamentale</div></div>
+    <div class="step-content"><p>Découverte du monde scolaire, début de l’intérêt pour la technologie et l’informatique.</p></div>
   </div>
 
-  <div class="right-contents">
-    <div class="timeline-step">
-      <div class="step-content">
-        <p>Découverte du monde scolaire, début de l’intérêt pour la technologie et l’informatique.</p>
-      </div>
-    </div>
+  <div class="timeline-step">
+    <div class="step-marker"></div>
+    <div class="step-title"><div class="sticky-box">2019 – Sciences appliquées</div></div>
+    <div class="step-content"><p>Orientation scientifique, développement des compétences logiques, en physique et mathématiques.</p></div>
+  </div>
 
-    <div class="timeline-step">
-      <div class="step-content">
-        <p>Orientation scientifique, développement des compétences logiques, en physique et mathématiques.</p>
-      </div>
-    </div>
+  <div class="timeline-step">
+    <div class="step-marker"></div>
+    <div class="step-title"><div class="sticky-box">2021 – CEFA Technique</div></div>
+    <div class="step-content"><p>Formation technique, projets concrets en électronique et systèmes embarqués.</p></div>
+  </div>
 
-    <div class="timeline-step">
-      <div class="step-content">
-        <p>Formation technique, projets concrets en électronique et systèmes embarqués.</p>
-      </div>
-    </div>
+  <div class="timeline-step">
+    <div class="step-marker"></div>
+    <div class="step-title"><div class="sticky-box">2024 – EPHEC Informatique</div></div>
+    <div class="step-content"><p>Bachelier en informatique, projets Web, API, bases de données, UX/UI, stage en entreprise.</p></div>
+  </div>
 
-    <div class="timeline-step">
-      <div class="step-content">
-        <p>Bachelier en informatique, projets Web, API, bases de données, UX/UI, stage en entreprise.</p>
-      </div>
-    </div>
-
-    <div class="timeline-step">
-      <div class="step-content">
-        <p>Développement d’un dashboard connecté à un automate via Node-RED et MQTT.</p>
-      </div>
-    </div>
+  <div class="timeline-step">
+    <div class="step-marker"></div>
+    <div class="step-title"><div class="sticky-box">2024 – Stage Technivor</div></div>
+    <div class="step-content"><p>Développement d’un dashboard connecté à un automate via Node-RED et MQTT.</p></div>
   </div>
 </div>
 
