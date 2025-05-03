@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Parcours - Lucas Deneumostier</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
@@ -41,6 +41,26 @@
       color: #FFD700;
     }
 
+    .sticky-titles {
+      position: fixed;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      max-width: 600px;
+      z-index: 999;
+    }
+
+    .sticky-titles .sticky-item {
+      background-color: rgba(0,0,0,0.7);
+      border-left: 4px solid #FFD700;
+      padding: 10px 15px;
+      margin-bottom: 8px;
+      border-radius: 6px;
+      font-weight: bold;
+      display: none;
+    }
+
     .timeline-container {
       position: relative;
       max-width: 1000px;
@@ -66,25 +86,32 @@
       position: relative;
     }
 
-    .timeline-step .pin-title {
-      position: sticky;
-      top: 80px;
-      width: 45%;
-      padding: 10px 20px;
-      font-size: 1.3em;
-      font-weight: bold;
-      background-color: rgba(0, 0, 0, 0.7);
-      border-left: 4px solid #FFD700;
-      border-radius: 8px;
+    .timeline-step .step-marker {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #FFD700;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      top: 10px;
     }
 
     .timeline-step .step-content {
-      width: 50%;
+      width: 45%;
       padding: 20px;
       background-color: rgba(255,255,255,0.05);
       border-radius: 8px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
       animation: fadeInRight 1s ease;
+    }
+
+    .timeline-step:nth-child(even) .step-content {
+      margin-left: 55%;
+    }
+
+    .timeline-step:nth-child(odd) .step-content {
+      margin-right: 55%;
     }
 
     @keyframes fadeInRight {
@@ -127,19 +154,19 @@
     }
 
     @media (max-width: 768px) {
-      .timeline-step {
-        flex-direction: column;
-        align-items: center;
-      }
-
-      .timeline-step .pin-title, .timeline-step .step-content {
+      .timeline-step .step-content {
         width: 100%;
-        margin-bottom: 20px;
+        margin: auto;
       }
 
-      .timeline-line {
-        left: 10px;
-        transform: none;
+      .timeline-step:nth-child(even) .step-content,
+      .timeline-step:nth-child(odd) .step-content {
+        margin: auto;
+      }
+
+      .sticky-titles {
+        width: 95%;
+        top: 60px;
       }
     }
   </style>
@@ -156,41 +183,43 @@
 
   <h1>Mon Parcours</h1>
 
+  <div class="sticky-titles" id="stickyContainer"></div>
+
   <div class="timeline-container">
     <div class="timeline-line"></div>
 
-    <div class="timeline-step">
-      <div class="pin-title">2015 – École fondamentale</div>
+    <div class="timeline-step" data-title="2015 – École fondamentale">
+      <div class="step-marker"></div>
       <div class="step-content">
-        <p>Premiers pas dans un environnement éducatif, découverte de l’informatique et esprit curieux en développement.</p>
+        <p>Premiers pas dans l’éducation, découverte de l’informatique et intérêt pour la technologie.</p>
       </div>
     </div>
 
-    <div class="timeline-step">
-      <div class="pin-title">2019 – Secondaire : Sciences appliquées</div>
+    <div class="timeline-step" data-title="2019 – Sciences appliquées">
+      <div class="step-marker"></div>
       <div class="step-content">
-        <p>Approfondissement des sciences, logique, mathématiques et premières expériences en électronique.</p>
+        <p>Logique, mathématiques, physique : consolidation de compétences analytiques et techniques.</p>
       </div>
     </div>
 
-    <div class="timeline-step">
-      <div class="pin-title">2021 – CEFA : Formation technique</div>
+    <div class="timeline-step" data-title="2021 – CEFA : Technique embarquée">
+      <div class="step-marker"></div>
       <div class="step-content">
-        <p>Étude des bases de l’électronique, de la programmation embarquée et projets Arduino.</p>
+        <p>Formation technique : électronique, microcontrôleurs, Arduino, projets pratiques.</p>
       </div>
     </div>
 
-    <div class="timeline-step">
-      <div class="pin-title">2024 – EPHEC : Bachelier en Informatique</div>
+    <div class="timeline-step" data-title="2024 – EPHEC : Informatique">
+      <div class="step-marker"></div>
       <div class="step-content">
-        <p>Développement web, gestion de bases de données, projets concrets en full-stack et stage en entreprise.</p>
+        <p>Développement Web, bases de données, API, UI/UX, sécurité, méthodes agiles et stage en entreprise.</p>
       </div>
     </div>
 
-    <div class="timeline-step">
-      <div class="pin-title">2024 – Stage chez Technivor</div>
+    <div class="timeline-step" data-title="2024 – Stage chez Technivor">
+      <div class="step-marker"></div>
       <div class="step-content">
-        <p>Développement d’un tableau de bord connecté, analyse de flux de données, intégration industrielle avec Node-RED.</p>
+        <p>Conception d’un tableau de bord connecté à un automate industriel via Node-RED, MQTT et serveur local.</p>
       </div>
     </div>
   </div>
@@ -200,22 +229,22 @@
 
     <div class="value-block">
       <h2>Créativité</h2>
-      <p>Capacité à créer des solutions nouvelles et originales. Innovation dans les projets Web, électroniques ou embarqués.</p>
+      <p>Capacité à créer des solutions originales et efficaces dans des contextes variés.</p>
     </div>
 
     <div class="value-block">
       <h2>Sérieux</h2>
-      <p>Rigueur dans la gestion de projet, suivi méthodique et professionnalisme dans toutes les tâches confiées.</p>
+      <p>Engagement rigoureux dans chaque projet, respect des délais, organisation claire.</p>
     </div>
 
     <div class="value-block">
       <h2>Bienveillance</h2>
-      <p>Travail en équipe, respect des autres et collaboration positive dans un esprit constructif.</p>
+      <p>Esprit d’équipe, collaboration et entraide dans tous les contextes professionnels et académiques.</p>
     </div>
 
     <div class="value-block">
       <h2>Ambition</h2>
-      <p>Volonté constante d’apprendre, d’évoluer et de viser l’excellence dans tous les domaines techniques abordés.</p>
+      <p>Volonté d’évoluer en permanence, de progresser et de viser des projets de plus en plus ambitieux.</p>
     </div>
   </div>
 
@@ -224,8 +253,44 @@
   </footer>
 
   <script>
-    const blocks = document.querySelectorAll('.value-block');
+    // Sticky pile
+    const steps = document.querySelectorAll('.timeline-step');
+    const stickyContainer = document.getElementById('stickyContainer');
+
+    const shownTitles = new Set();
+
     const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const title = entry.target.getAttribute('data-title');
+        if (entry.isIntersecting && !shownTitles.has(title)) {
+          const div = document.createElement('div');
+          div.textContent = title;
+          div.classList.add('sticky-item');
+          stickyContainer.appendChild(div);
+          setTimeout(() => div.style.display = 'block', 100);
+          shownTitles.add(title);
+        }
+      });
+    }, { threshold: 0.4 });
+
+    steps.forEach(step => observer.observe(step));
+
+    // Remove stack at end
+    const valuesSection = document.querySelector('.values-section');
+    const hideObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          stickyContainer.innerHTML = '';
+          shownTitles.clear();
+        }
+      });
+    }, { threshold: 0.2 });
+
+    hideObserver.observe(valuesSection);
+
+    // Values animation
+    const values = document.querySelectorAll('.value-block');
+    const valueObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
@@ -233,7 +298,7 @@
       });
     }, { threshold: 0.3 });
 
-    blocks.forEach(block => observer.observe(block));
+    values.forEach(block => valueObserver.observe(block));
   </script>
 
 </body>
