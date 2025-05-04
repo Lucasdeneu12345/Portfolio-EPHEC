@@ -73,6 +73,23 @@
       object-fit: cover;
       display: block;
     }
+
+    .split-images {
+  display: flex;
+  position: relative;
+  gap: 0;
+  }
+
+    .split-images img {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  }
+
+  .divider {
+  width: 4px;
+  background: linear-gradient(to bottom, #FFD700, #fff700);
+}
     .project-info {
       padding: 30px;
       width: 50%;
@@ -144,12 +161,17 @@
     </div>
 
     <div class="project-card" data-aos="fade-left">
-      <div class="project-media"><img src="variateur.jpg" alt="Variteur de fréquence" /></div>
+      <div class="project-media split-images">
+        <img src="avant-variateur.jpg" alt="Avant remplacement variateur">
+        <div class="divider"></div>
+        <img src="apres-variateur.jpg" alt="Après remplacement variateur">
+      </div>
       <div class="project-info">
         <h3>Remplacement d'un variateur de fréquence</h3>
         <p>Installation et programmation d’un variateur de fréquence pour un moteur asynchrone.</p>
       </div>
     </div>
+    
 
     <div class="project-card" data-aos="fade-right">
       <div class="project-media"><img src="dashboard-nodered.jpg" alt="Dashboard Node-RED" /></div>
