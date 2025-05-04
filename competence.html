@@ -47,82 +47,54 @@
     }
     .skills-container {
       position: relative;
-      margin: 0 auto;
-      padding: 100px 20px;
+      padding: 50px 20px;
       max-width: 1000px;
+      margin: auto;
     }
     .skill-block {
-      position: relative;
+      position: sticky;
+      top: 100px;
       background-color: #1c1c1e;
+      margin-bottom: 200px;
       padding: 30px;
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-top: -80px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
       transition: all 0.4s ease-in-out;
+    }
+    .skill-block.stacked {
       z-index: 1;
     }
-    .skill-block:first-child {
-      margin-top: 0;
-    }
-    .skill-block .skill-text {
+    .skill-text {
       width: 55%;
-      z-index: 2;
     }
-    .skill-block .skill-text h2 {
+    .skill-text h2 {
       color: #FFD700;
       margin-bottom: 15px;
     }
-    .skill-block .skill-text p {
+    .skill-text p {
       font-size: 1.1em;
       line-height: 1.6;
     }
-    .skill-block .skill-img {
+    .skill-img {
       width: 40%;
       display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      z-index: 2;
+      justify-content: center;
     }
-    .skill-block .skill-img img {
-      width: 100%;
-      max-width: 200px;
+    .skill-img img {
+      max-width: 100%;
       border-radius: 12px;
       box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-    }
-    .skill-block::before {
-      content: '';
-      position: absolute;
-      top: 10px;
-      left: 0;
-      right: 0;
-      height: calc(100% - 20px);
-      background-color: #1c1c1e;
-      opacity: 0.3;
-      z-index: 0;
-      border-radius: 12px;
-    }
-    .skill-block:not(:first-child) {
-      z-index: 0;
-    }
-    .skill-block:not(:first-child) .skill-text h2,
-    .skill-block:not(:first-child) .skill-img img {
-      opacity: 0.4;
-      transform: scale(0.9);
-    }
-    .skill-block.active {
-      z-index: 2;
     }
     @media (max-width: 768px) {
       .skill-block {
         flex-direction: column;
-        margin-top: -40px;
+        text-align: center;
       }
       .skill-text, .skill-img {
         width: 100%;
-        text-align: center;
       }
       .skill-img {
         margin-top: 20px;
@@ -131,6 +103,7 @@
   </style>
 </head>
 <body>
+
   <nav>
     <a href="index.html">Accueil</a>
     <a href="projets.html">Projets</a>
@@ -145,7 +118,7 @@
   </header>
 
   <section class="skills-container">
-    <div class="skill-block active">
+    <div class="skill-block stacked">
       <div class="skill-text">
         <h2>Développement Web</h2>
         <p>Création de sites web modernes en HTML, CSS, JavaScript et frameworks comme React. Responsive design, animations et UX au rendez-vous.</p>
@@ -155,7 +128,7 @@
       </div>
     </div>
 
-    <div class="skill-block">
+    <div class="skill-block stacked">
       <div class="skill-text">
         <h2>Programmation embarquée</h2>
         <p>Utilisation de microcontrôleurs comme Arduino et ESP32 pour piloter des capteurs, actionneurs et créer des prototypes intelligents.</p>
@@ -165,7 +138,7 @@
       </div>
     </div>
 
-    <div class="skill-block">
+    <div class="skill-block stacked">
       <div class="skill-text">
         <h2>Design UI/UX</h2>
         <p>Conception d'interfaces intuitives et esthétiques, avec Figma ou Adobe XD. Maquettes, wireframes et tests utilisateurs intégrés dans le process.</p>
@@ -175,7 +148,7 @@
       </div>
     </div>
 
-    <div class="skill-block">
+    <div class="skill-block stacked">
       <div class="skill-text">
         <h2>Gestion de projet agile</h2>
         <p>Méthodes agiles (Scrum, Kanban), outils comme Trello, Notion et Git pour planifier, collaborer et livrer des projets dans les temps.</p>
@@ -185,7 +158,7 @@
       </div>
     </div>
 
-    <div class="skill-block">
+    <div class="skill-block stacked">
       <div class="skill-text">
         <h2>Électronique et prototypage</h2>
         <p>Connaissance des composants électroniques, création de circuits imprimés simples, soudure, tests et debug matériel.</p>
@@ -195,6 +168,18 @@
       </div>
     </div>
   </section>
+
+  <script>
+    const skillBlocks = document.querySelectorAll('.skill-block');
+    let observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.3 });
+    skillBlocks.forEach(block => observer.observe(block));
+  </script>
 
 </body>
 </html>

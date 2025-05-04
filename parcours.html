@@ -4,13 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Parcours - Lucas Deneumostier</title>
-  <link href="https://https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
       background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
       color: white;
+      overflow-x: hidden;
     }
 
     nav {
@@ -41,10 +42,10 @@
     }
 
     .timeline-container {
-      max-width: 1200px;
+      position: relative;
+      max-width: 1000px;
       margin: auto;
       padding: 20px;
-      position: relative;
     }
 
     .timeline-line {
@@ -55,59 +56,48 @@
       width: 4px;
       background-color: #FFD700;
       transform: translateX(-50%);
-      z-index: 0;
     }
 
     .timeline-step {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      margin: 80px 0;
+      margin: 150px 0;
       position: relative;
     }
 
-    .step-title {
-      width: 45%;
-      display: flex;
-      justify-content: flex-end;
-      padding-right: 20px;
-    }
-
-    .sticky-box {
-      background-color: #111;
-      border-left: 5px solid #FFD700;
-      padding: 12px 18px;
-      border-radius: 6px;
-      font-weight: bold;
+    .timeline-step .pin-title {
       position: sticky;
-      z-index: 2;
+      top: 80px;
+      width: 43%;
+      padding: 10px 20px;
+      font-size: 1.3em;
+      font-weight: bold;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-left: 4px solid #FFD700;
+      border-radius: 8px;
     }
 
-    .timeline-step:nth-child(1) .sticky-box { top: 80px; }
-    .timeline-step:nth-child(2) .sticky-box { top: 120px; }
-    .timeline-step:nth-child(3) .sticky-box { top: 160px; }
-    .timeline-step:nth-child(4) .sticky-box { top: 200px; }
-    .timeline-step:nth-child(5) .sticky-box { top: 240px; }
-
-    .step-content {
-      width: 50%;
-      background-color: rgba(255, 255, 255, 0.05);
+    /* 🎯 LIGNE QUI POSITIONNE LES EXPLICATIONS */
+    .timeline-step .step-content {
+      width: 40%;
       padding: 20px;
-      margin-left: 20px;
+      background-color: rgba(255,255,255,0.05);
       border-radius: 8px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
       animation: fadeInRight 1s ease;
     }
 
-    .step-marker {
+    .timeline-step::before {
+      content: "";
       position: absolute;
       left: 50%;
-      top: 20px;
-      width: 14px;
-      height: 14px;
-      background-color: #FFD700;
-      border-radius: 50%;
       transform: translateX(-50%);
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: #FFD700;
+      top: 20px;
       z-index: 2;
     }
 
@@ -149,92 +139,116 @@
       padding: 30px;
       font-size: 0.9em;
     }
+
+    @media (max-width: 768px) {
+      .timeline-step {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .timeline-step .pin-title, .timeline-step .step-content {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+
+      .timeline-line {
+        left: 10px;
+        transform: none;
+      }
+    }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="index.html">Accueil</a>
-  <a href="projets.html">Projets</a>
-  <a href="contact.html">Contact</a>
-  <a href="competence.html">Compétences</a>
-  <a href="parcours.html">Parcours</a>
-</nav>
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="projets.html">Projets</a>
+    <a href="contact.html">Contact</a>
+    <a href="competence.html">Compétences</a>
+    <a href="parcours.html">Parcours</a>
+  </nav>
 
-<h1>Mon Parcours</h1>
+  <h1>Mon Parcours</h1>
 
-<div class="timeline-container">
-  <div class="timeline-line"></div>
+  <div class="timeline-container">
+    <div class="timeline-line"></div>
 
-  <div class="timeline-step">
-    <div class="step-marker"></div>
-    <div class="step-title"><div class="sticky-box">2015 – École fondamentale</div></div>
-    <div class="step-content"><p>Découverte du monde scolaire, début de l’intérêt pour la technologie et l’informatique.</p></div>
+    <div class="timeline-step">
+      <div class="pin-title">2015 – École fondamentale</div>
+      <div class="step-content">
+        <p>Premiers pas dans un environnement éducatif, découverte de l’informatique et esprit curieux en développement.</p>
+      </div>
+    </div>
+
+    <div class="timeline-step">
+      <div class="pin-title">2019 – Sciences appliquées</div>
+      <div class="step-content">
+        <p>Approfondissement des sciences, logique, mathématiques et premières expériences en électronique.</p>
+      </div>
+    </div>
+
+    <div class="timeline-step">
+      <div class="pin-title">2021 – CEFA : Formation technique</div>
+      <div class="step-content">
+        <p>Étude des bases de l’électronique, de la programmation embarquée et projets Arduino.</p>
+      </div>
+    </div>
+
+    <div class="timeline-step">
+      <div class="pin-title">2024 – EPHEC : Bachelier en Informatique</div>
+      <div class="step-content">
+        <p>Développement web, gestion de bases de données, projets concrets en full-stack et stage en entreprise.</p>
+      </div>
+    </div>
+
+    <div class="timeline-step">
+      <div class="pin-title">2024 – Stage chez Technivor</div>
+      <div class="step-content">
+        <p>Développement d’un tableau de bord connecté, analyse de flux de données, intégration industrielle avec Node-RED.</p>
+      </div>
+    </div>
   </div>
 
-  <div class="timeline-step">
-    <div class="step-marker"></div>
-    <div class="step-title"><div class="sticky-box">2019 – Sciences appliquées</div></div>
-    <div class="step-content"><p>Orientation scientifique, développement des compétences logiques, en physique et mathématiques.</p></div>
+  <div class="values-section">
+    <h1 style="text-align: center; color: #FFD700; margin-bottom: 40px;">Valeurs acquises</h1>
+
+    <div class="value-block">
+      <h2>Créativité</h2>
+      <p>Capacité à créer des solutions nouvelles et originales.</p>
+    </div>
+
+    <div class="value-block">
+      <h2>Sérieux</h2>
+      <p>Rigueur dans la gestion de projet, suivi méthodique et professionnalisme.</p>
+    </div>
+
+    <div class="value-block">
+      <h2>Bienveillance</h2>
+      <p>Travail en équipe, respect des autres et collaboration positive.</p>
+    </div>
+
+    <div class="value-block">
+      <h2>Ambition</h2>
+      <p>Volonté constante d’apprendre, d’évoluer et de viser l’excellence.</p>
+    </div>
   </div>
 
-  <div class="timeline-step">
-    <div class="step-marker"></div>
-    <div class="step-title"><div class="sticky-box">2021 – CEFA Technique</div></div>
-    <div class="step-content"><p>Formation technique, projets concrets en électronique et systèmes embarqués.</p></div>
-  </div>
+  <footer>
+    &copy; 2025 Lucas Deneumostier
+  </footer>
 
-  <div class="timeline-step">
-    <div class="step-marker"></div>
-    <div class="step-title"><div class="sticky-box">2024 – EPHEC Informatique</div></div>
-    <div class="step-content"><p>Bachelier en informatique, projets Web, API, bases de données, UX/UI, stage en entreprise.</p></div>
-  </div>
+  <script>
+    const blocks = document.querySelectorAll('.value-block');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.3 });
 
-  <div class="timeline-step">
-    <div class="step-marker"></div>
-    <div class="step-title"><div class="sticky-box">2024 – Stage Technivor</div></div>
-    <div class="step-content"><p>Développement d’un dashboard connecté à un automate via Node-RED et MQTT.</p></div>
-  </div>
-</div>
-
-<div class="values-section" id="valuesSection">
-  <h1 style="text-align: center; color: #FFD700; margin-bottom: 40px;">Valeurs acquises</h1>
-
-  <div class="value-block">
-    <h2>Créativité</h2>
-    <p>Imaginer des solutions techniques nouvelles dans des contextes concrets (projets web, électronique, etc.).</p>
-  </div>
-
-  <div class="value-block">
-    <h2>Sérieux</h2>
-    <p>Travail rigoureux, respect des consignes, gestion de projet et autonomie renforcée.</p>
-  </div>
-
-  <div class="value-block">
-    <h2>Bienveillance</h2>
-    <p>Collaboration avec les équipes, bonne communication et respect dans les projets collectifs.</p>
-  </div>
-
-  <div class="value-block">
-    <h2>Ambition</h2>
-    <p>Volonté constante d’apprendre et de progresser à chaque étape de mon parcours.</p>
-  </div>
-</div>
-
-<footer>&copy; 2025 Lucas Deneumostier</footer>
-
-<script>
-  const valueBlocks = document.querySelectorAll('.value-block');
-  const valueObserver = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, { threshold: 0.3 });
-
-  valueBlocks.forEach(block => valueObserver.observe(block));
-</script>
+    blocks.forEach(block => observer.observe(block));
+  </script>
 
 </body>
 </html>
