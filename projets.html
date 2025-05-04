@@ -125,29 +125,32 @@
   left: 50%;
   z-index: 2;
   }
-    .angled-split {
+      .angled-split {
   position: relative;
   display: flex;
+  height: 300px; /* Hauteur fixe pour homogénéiser */
   overflow: hidden;
-  height: 250px;
+  border-radius: 12px 0 0 12px;
   }
 
     .img-left, .img-right {
   width: 50%;
-  object-fit: cover;
   height: 100%;
+  object-fit: cover;
+  display: block;
   }
 
     .diagonal-divider {
   position: absolute;
   width: 4px;
-  height: 150%;
+  height: 130%;
   background: #FFD700;
   transform: rotate(15deg);
-  top: -25%;
+  top: -15%;
   left: 50%;
   z-index: 2;
   }
+
 
 
     footer {
