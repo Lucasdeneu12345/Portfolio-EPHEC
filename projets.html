@@ -102,6 +102,30 @@
       font-size: 1.05em;
       line-height: 1.6;
     }
+    .angled-split {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  height: 250px;
+  }
+
+    .img-left, .img-right {
+  width: 50%;
+  object-fit: cover;
+  height: 100%;
+  }
+
+    .diagonal-divider {
+  position: absolute;
+  width: 4px;
+  height: 150%;
+  background: #FFD700;
+  transform: rotate(15deg);
+  top: -25%;
+  left: 50%;
+  z-index: 2;
+  }
+
     footer {
       text-align: center;
       padding: 20px;
@@ -161,11 +185,12 @@
     </div>
 
     <div class="project-card" data-aos="fade-left">
-      <div class="project-media split-images">
-        <img src="avant-variateur.jpg" alt="Avant remplacement variateur">
-        <div class="divider"></div>
-        <img src="apres-variateur.jpg" alt="Après remplacement variateur">
+      <div class="project-media angled-split">
+        <img src="avant-variateur.jpg" alt="Avant" class="img-left">
+        <div class="diagonal-divider"></div>
+        <img src="apres-variateur.jpg" alt="Après" class="img-right">
       </div>
+      
       <div class="project-info">
         <h3>Remplacement d'un variateur de fréquence</h3>
         <p>Installation et programmation d’un variateur de fréquence pour un moteur asynchrone.</p>
