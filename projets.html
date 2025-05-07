@@ -171,11 +171,23 @@
   width: 4px;
   height: 150%;
   background: #FFD700;
-  transform: rotate(15deg); /* Incliné vers la droite */
+  transform: rotate(-24.5deg); /* Incliné vers la droite */
   top: -25%;
-  left: 70%; /* Position horizontale de la ligne */
+  left: 47.5%; /* Position horizontale de la ligne */
   z-index: 2;
   }
+  
+    .custom-divider-dashboard {
+  position: absolute;
+  width: 4px;
+  height: 150%;
+  background: #FFD700;
+  transform: rotate(20deg); /* inclinaison différente */
+  top: -30%;
+  left: 52%;
+  z-index: 2
+  }
+  
 
 
 
@@ -230,7 +242,7 @@
     </div>
 
     <div class="project-card" data-aos="fade-right">
-      <div class="project-media"><img src="mqtt.jpg" alt="Protocoles industriels" /></div>
+      <div class="project-media"><img src="Protocole.png" alt="Protocoles industriels" /></div>
       <div class="project-info">
         <h3>Intégration de protocoles de communication </communic></h3>
         <p>Communication entre automates, capteurs, serveurs ou interfaces (HMI, Node-RED) via Modbus TCP, Ethernet/IP et MQTT.</p>
@@ -250,11 +262,14 @@
       </div>
     </div>
     
-    
 
     <div class="project-card" data-aos="fade-right">
-      <div class="project-media"><img src="dashboard-nodered.jpg" alt="Dashboard Node-RED" /></div>
-      <div class="project-info">
+        <div class="project-media">
+          <div class="single-image-with-line">
+            <img src="Dash_board.png" alt="Dashboard Node-RED" />
+            <div class="custom-divider-dashboard"></div> <!-- ← barre spécifique -->
+          </div>
+        </div>
         <h3>Supervision et contrôle à distance d’une installation automatisée.</h3>
         <p>Création d’un tableau de bord connecté et accessible à distance pour superviser en temps réel les données collectées par des automates industriels sur site.</p>
       </div>
