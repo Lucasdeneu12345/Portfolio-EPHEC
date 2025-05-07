@@ -151,6 +151,32 @@
   z-index: 2;
   }
 
+    .single-image-with-line {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 12px 0 0 12px;
+  }
+
+    .single-image-with-line img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  }
+
+    .custom-divider {
+  position: absolute;
+  width: 4px;
+  height: 150%;
+  background: #FFD700;
+  transform: rotate(15deg); /* Incliné vers la droite */
+  top: -25%;
+  left: 70%; /* Position horizontale de la ligne */
+  z-index: 2;
+  }
+
 
 
     footer {
@@ -212,10 +238,11 @@
     </div>
 
     <div class="project-card" data-aos="fade-left">
-      <div class="project-media angled-split">
-        <img src="avant-variateur.jpg" alt="Avant" class="img-left">
-        <div class="diagonal-divider"></div>
-        <img src="apres-variateur.jpg" alt="Après" class="img-right">
+      <div class="project-media">
+        <div class="single-image-with-line">
+          <img src="Variateur_av_ap.png" alt="Avant et après variateur" />
+          <div class="custom-divider"></div>
+        </div>
       </div>
       <div class="project-info">
         <h3>Remplacement d'un variateur de fréquence</h3>
