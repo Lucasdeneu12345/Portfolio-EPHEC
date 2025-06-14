@@ -44,7 +44,25 @@
       text-align: center;
       font-size: 1.1em;
       color: #ccc;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
+    }
+
+    .cv-button {
+      display: block;
+      text-align: center;
+      margin: 0 auto 40px;
+      padding: 12px 24px;
+      font-weight: bold;
+      color: #000;
+      background-color: #FFD700;
+      text-decoration: none;
+      border-radius: 8px;
+      width: fit-content;
+      transition: background-color 0.3s ease;
+    }
+
+    .cv-button:hover {
+      background-color: #e6c200;
     }
 
     .contact-form {
@@ -114,20 +132,25 @@
   </nav>
 
   <h1>Me contacter</h1>
-  <p class="intro">Vous êtes intéressé par mon profil ? Laissez-moi un message ✉️</p>
+  <p class="intro">Vous êtes intéressé par mon profil ? Téléchargez mon CV et envoyez-moi un message ✉️</p>
 
-  <form class="contact-form" action="mailto:lucas@deneumostier.be" method="POST" enctype="text/plain">
-    <label for="name">Nom :</label>
-    <input type="text" id="name" name="Nom" required>
+  <!-- 📄 Bouton pour télécharger le CV -->
+  <a href="Lucas_Deneumostier_CV.pdf" download class="cv-button">📄 Télécharger mon CV</a>
 
-    <label for="company">Entreprise :</label>
-    <input type="text" id="company" name="Entreprise">
+  <!-- 📬 Formulaire FormSubmit -->
+<form class="contact-form" action="https://hook.eu2.make.com/4wiyxnw2pzo3o3uos2ivv1lf4z1re2yx" method="POST">
+  <label for="name">Nom :</label>
+  <input type="text" id="name" name="nom" required>
 
-    <label for="message">Commentaire :</label>
-    <textarea id="message" name="Commentaire" required></textarea>
+  <label for="company">Entreprise :</label>
+  <input type="text" id="company" name="entreprise">
 
-    <button type="submit">Envoyer</button>
-  </form>
+  <label for="message">Commentaire :</label>
+  <textarea id="message" name="commentaire" required></textarea>
+
+  <button type="submit">Envoyer</button>
+</form>
+
 
   <footer>
     &copy; 2025 Lucas Deneumostier – Tous droits réservés<br>
