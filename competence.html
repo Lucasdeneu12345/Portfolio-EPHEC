@@ -6,6 +6,97 @@
   <title>Compétences - Lucas Deneumostier</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <style>
+  
+  .skill-wrapper {
+  position: relative;
+  padding-bottom: 1px; /* espace après les cartes */
+}
+
+.skill-block {
+  position: sticky;
+  top: 100px;
+  z-index: 2;
+}
+
+.skill-block.last-block {
+  position: relative !important;
+  top: auto !important;
+  z-index: 1;
+}
+
+  .skill-block:last-of-type {
+  position: relative !important;
+  top: auto !important;
+}
+
+  .formation-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding-bottom: 80px;
+}
+
+.formation-card {
+  background: transparent;
+  width: 280px;
+  height: 340px;
+  perspective: 1000px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s ease;
+  transform-style: preserve-3d;
+}
+
+.formation-card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px;
+}
+
+.card-front {
+  background-color: #1c1c1e;
+  color: white;
+  z-index: 2;
+}
+
+.card-front img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 2px solid #FFD700;
+}
+
+.card-front h3 {
+  margin-top: 15px;
+  color: #FFD700;
+}
+
+.card-back {
+  background-color: #FFD700;
+  color: #1c1c1e;
+  transform: rotateY(180deg);
+  justify-content: center;
+  text-align: center;
+}
+
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
@@ -129,10 +220,11 @@
   </header>
 
   <section class="skills-container">
+  <div class="skill-wrapper">
     <div class="skill-block stacked">
       <div class="skill-text">
         <h2>Développement Web</h2>
-        <p>Création de sites web modernes en HTML, CSS, JavaScript et frameworks comme React. Responsive design, animations et UX au rendez-vous.</p>
+        <p>Création de sites web modernes...</p>
       </div>
       <div class="skill-img">
         <img src="webdev.jpg" alt="Développement Web">
@@ -142,42 +234,84 @@
     <div class="skill-block stacked">
       <div class="skill-text">
         <h2>Programmation embarquée</h2>
-        <p>Utilisation de microcontrôleurs comme Arduino et ESP32 pour piloter des capteurs, actionneurs et créer des prototypes intelligents.</p>
+        <p>Utilisation de microcontrôleurs...</p>
       </div>
       <div class="skill-img">
-        <img src="arduino.jpg" alt="Programmation embarquée">
+        <img src="arduino.jpg" alt="Arduino">
       </div>
     </div>
 
     <div class="skill-block stacked">
       <div class="skill-text">
         <h2>Design UI/UX</h2>
-        <p>Conception d'interfaces intuitives et esthétiques, avec Figma ou Adobe XD. Maquettes, wireframes et tests utilisateurs intégrés dans le process.</p>
+        <p>Conception d'interfaces intuitives...</p>
       </div>
       <div class="skill-img">
-        <img src="design.jpg" alt="Design UX UI">
+        <img src="design.jpg" alt="Design">
       </div>
     </div>
 
     <div class="skill-block stacked">
       <div class="skill-text">
         <h2>Gestion de projet agile</h2>
-        <p>Méthodes agiles (Scrum, Kanban), outils comme Trello, Notion et Git pour planifier, collaborer et livrer des projets dans les temps.</p>
+        <p>Méthodes agiles, Trello, Notion, Git...</p>
       </div>
       <div class="skill-img">
-        <img src="agile.jpg" alt="Gestion agile">
+        <img src="agile.jpg" alt="Agile">
       </div>
     </div>
 
-    <div class="skill-block stacked">
+    <!-- ✅ DERNIÈRE CARTE : ne sera PAS sticky -->
+    <div class="skill-block last-block">
       <div class="skill-text">
         <h2>Électronique et prototypage</h2>
-        <p>Connaissance des composants électroniques, création de circuits imprimés simples, soudure, tests et debug matériel.</p>
+        <p>Création de circuits, soudure, tests...</p>
       </div>
       <div class="skill-img">
         <img src="electronique.jpg" alt="Électronique">
       </div>
     </div>
+  </div>
+    
+    <h2 style="text-align:center; color:#FFD700; font-size:2.2em; margin-bottom:40px; margin-top:80px;">Formation continue & Expériences</h2>
+<div class="formation-cards">
+  <div class="formation-card">
+    <div class="card-inner">
+      <div class="card-front">
+        <img src="salon-industrie.jpg" alt="Salon de l’industrie">
+        <h3>Salon de l’industrie</h3>
+      </div>
+      <div class="card-back">
+        <p>Visite en 2024, découvertes en robotique, automatisation et échanges professionnels.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="formation-card">
+    <div class="card-inner">
+      <div class="card-front">
+        <img src="formation-nodered.jpg" alt="Formation Node-RED">
+        <h3>Formation Node-RED</h3>
+      </div>
+      <div class="card-back">
+        <p>Formation avancée sur les flux industriels, MQTT et dashboards temps réel.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="formation-card">
+    <div class="card-inner">
+      <div class="card-front">
+        <img src="technivor.jpg" alt="Service Technivor">
+        <h3>Service chez Technivor</h3>
+      </div>
+      <div class="card-back">
+        <p>Développement d’un tableau de bord connecté adapté à la production.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
   </section>
 
   <footer>
