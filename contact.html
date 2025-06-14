@@ -2,33 +2,190 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>Test Make</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact - Lucas Deneumostier</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+    }
+
+    nav {
+      background-color: #000;
+      text-align: center;
+      padding: 10px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: #FFD700;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 60px 0 20px;
+      font-size: 2.8em;
+      color: #FFD700;
+    }
+
+    p.intro {
+      text-align: center;
+      font-size: 1.1em;
+      color: #ccc;
+      margin-bottom: 30px;
+    }
+
+    .cv-button {
+      display: block;
+      text-align: center;
+      margin: 0 auto 40px;
+      padding: 12px 24px;
+      font-weight: bold;
+      color: #000;
+      background-color: #FFD700;
+      text-decoration: none;
+      border-radius: 8px;
+      width: fit-content;
+      transition: background-color 0.3s ease;
+    }
+
+    .cv-button:hover {
+      background-color: #e6c200;
+    }
+
+    .contact-form {
+      background-color: rgba(0, 0, 0, 0.4);
+      max-width: 600px;
+      margin: auto;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .contact-form label {
+      display: block;
+      margin-top: 20px;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      background-color: #fff;
+      color: #000;
+    }
+
+    .contact-form textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    .contact-form button {
+      margin-top: 30px;
+      padding: 12px 25px;
+      background-color: #FFD700;
+      color: #000;
+      font-weight: bold;
+      font-size: 1em;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background-color: #e6c200;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9em;
+      color: #aaa;
+    }
+  </style>
 </head>
 <body>
-  <h2>Formulaire test Make</h2>
-  <form id="contactForm">
-    <input type="text" id="nom" placeholder="Nom" required><br><br>
-    <input type="text" id="entreprise" placeholder="Entreprise"><br><br>
-    <textarea id="commentaire" placeholder="Votre message" required></textarea><br><br>
-    <button type="submit">Envoyer</button>
-  </form>
 
-  <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
+  <nav>
+    <a href="index.html">Accueil</a>
+    <a href="projets.html">Projets</a>
+    <a href="competence.html">Compétences</a>
+    <a href="parcours.html">Parcours</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 
-      const data = new FormData();
-      data.append("nom", document.getElementById('nom').value);
-      data.append("entreprise", document.getElementById('entreprise').value);
-      data.append("commentaire", document.getElementById('commentaire').value);
+  <h1>Me contacter</h1>
+  <p class="intro">Vous êtes intéressé par mon profil ? Téléchargez mon CV et envoyez-moi un message ✉️</p>
 
-      fetch("https://hook.eu2.make.com/4wiyxnw2pzo3o3uos2ivv1lf4z1re2yx", {
-        method: "POST",
-        body: data
-      })
-      .then(() => alert("✅ Envoyé à Make !"))
-      .catch(err => console.error("Erreur :", err));
+  <!-- 📄 Bouton pour télécharger le CV -->
+  <a href="Lucas_Deneumostier_CV.pdf" download class="cv-button">📄 Télécharger mon CV</a>
+
+  <!-- 📬 Formulaire FormSubmit -->
+<form id="contactForm" class="contact-form">
+  <label for="name">Nom :</label>
+  <input type="text" id="name" name="nom" required>
+
+  <label for="company">Entreprise :</label>
+  <input type="text" id="company" name="entreprise">
+
+  <label for="message">Commentaire :</label>
+  <textarea id="message" name="commentaire" required></textarea>
+
+  <button type="submit">Envoyer</button>
+</form>
+
+<p id="confirmation" style="text-align:center; margin-top:20px; color:#FFD700; display:none;">
+  ✅ Message envoyé avec succès !
+</p>
+
+
+
+  <footer>
+    &copy; 2025 Lucas Deneumostier – Tous droits réservés<br>
+    Contact : lucas.deneumostier@email.com
+  </footer>
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    const data = {
+      nom: document.getElementById('name').value,
+      entreprise: document.getElementById('company').value,
+      commentaire: document.getElementById('message').value
+    };
+
+    fetch("https://hook.eu2.make.com/4wiyxnw2pzo3o3uos2ivv1lf4z1re2yx", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    })
+    .then(response => {
+      document.getElementById('confirmation').style.display = 'block';
+      document.getElementById('contactForm').reset();
+    })
+    .catch(error => {
+      alert("❌ Une erreur est survenue.");
+      console.error(error);
     });
-  </script>
+  });
+</script>
+
 </body>
 </html>
