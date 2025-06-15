@@ -9,16 +9,18 @@
     /* SWOT graphique intégré */
   .swot-wrapper {
     display: grid;
+     position: relative; /* AJOUTE CETTE LIGNE */
     grid-template-areas:
       ". strengths ."
       "threats center opportunities"
       ". weaknesses .";
     gap: 20px;
     text-align: center;
-    max-width: 1000px;
+    max-width: 90vw;
     margin: 100px auto;
     padding: 20px;
   }
+ 
   
   .swot-item {
     border-radius: 12px;
@@ -80,7 +82,62 @@
     margin: auto;
     box-shadow: 0 0 10px #FFD70088;
   }
-  
+   /* --- Traits et animation --- */
+.swot-wrapper::before,
+.swot-wrapper::after {
+  content: "";
+  position: absolute;
+  background-color: #FFD700;
+  z-index: 0;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.swot-wrapper::before {
+  top: 53%;
+  left: 44.3%;
+  width: 150px;
+  height: 3px;
+  transform: translateX(-45%);
+}
+
+.swot-wrapper::after {
+  top: 40%;
+  left: 54%;
+  width: 3px;
+  height: 45px;
+  transform: translateY(-50%);
+}
+
+.extra-line {
+  position: absolute;
+  top: 53%;
+  left: 63.5%;
+  width: 150px;
+  height: 3px;
+  background-color: #FFD700;
+  transform: translateX(-50%);
+  animation: pulse 3s infinite;
+  z-index: 0;
+}
+
+.extraa-line {
+  position: absolute;
+  top: 62%;
+  left: 54%;
+  width: 3px;
+  height: 45px;
+  background-color: #FFD700;
+  transform: translateX(-50%);
+  animation: pulse 3s infinite;
+  z-index: 0;
+}
+
+@keyframes pulse {
+  0%   { box-shadow: 0 0 6px 1px #FFD700; opacity: 1; }
+  50%  { box-shadow: 0 0 12px 5px #FFD700; opacity: 0.85; }
+  100% { box-shadow: 0 0 6px 1px #FFD700; opacity: 1; }
+}
+
   @media (max-width: 768px) {
     .swot-wrapper {
       grid-template-areas:
@@ -289,63 +346,75 @@
     </div>
 
     <div class="timeline-step">
+      <div class="pin-title">2025 – Stage chez Technivor</div>
+      <div class="step-content">
+        <p>Lors de mon stage chez Technivor, j’ai participé à des missions variées allant du dépannage de systèmes industriels à la conception de machines sur mesure. J’ai également contribué à la programmation de PLC et à la mise en place de protocoles de communication industrielle.</p>
+      </div>
+    </div>
+
+    <div class="timeline-step">
       <div class="pin-title">2025 – EAFC : Master en Sciences de l’Ingénierie</div>
       <div class="step-content">
         <p>Formation de niveau master axée sur l’approfondissement des connaissances en ingénierie, incluant des compétences avancées en analyse, conception, gestion de systèmes techniques complexes et innovation technologique.</p>
       </div>
     </div>
-
-    <div class="timeline-step">
-      <div class="pin-title">2024 – Stage chez Technivor</div>
-      <div class="step-content">
-        <p>Développement d’un tableau de bord connecté, analyse de flux de données, intégration industrielle avec Node-RED.</p>
-      </div>
-    </div>
   </div>
 <h1 style="text-align:center; color:#FFD700; margin-top:100px;">Analyse SWOT</h1>
 <div class="swot-wrapper">
+    
+      <div class="extra-line"></div>
+<div class="extraa-line"></div>
   <div class="swot-item strengths">
-    <h2>Forces</h2>
-    <p>Ex. : Créativité, autonomie, compétences techniques.</p>
+    <h2>💪 Forces</h2>
+    <p> Polyvalence technique<br>Compétences en programmation<br>Expérience en dépannage<br>Connaissances en communication industrielle<br>Esprit d’analyse<br>Mobilité personnelle assurée<br>Motivation constante</p>
   </div>
   <div class="swot-item threats">
-    <h2>Menaces</h2>
-    <p>Ex. : Concurrence, évolution rapide du marché.</p>
+    <h2>⚠️ Menaces</h2>
+    <p>Montée en puissance de l’IA dans la maintenance<br>Délocalisation progressive de certaines activités industrielles<br>Concurrence avec des profils plus expérimentés<br>Automatisation de certaines tâches<br>Crises économiques/réduction des budgets<br>Évolution trop rapide des technologies</p>
   </div>
   <div class="center">SWOT</div>
+
+
   <div class="swot-item opportunities">
-    <h2>Opportunités</h2>
-    <p>Ex. : Nouveaux marchés, formations continues.</p>
+    <h2>🚀 Opportunités</h2>
+    <p>Réseaux professionnels en développement<br>Tendance à la digitalisation<br>Développement de l’industrie 4.0P<br>énurie de techniciens qualifiés<br>Expérience polyvalente chez Technivor</p>
   </div>
   <div class="swot-item weaknesses">
-    <h2>Faiblesses</h2>
-    <p>Ex. : Manque d'expérience, outils à perfectionner.</p>
+    <h2>📉 Faiblesses</h2>
+    <p>Absence du certificat BA5<br>Priorisation des tâches<br>Expression claire de mes idées<br>Gestion du temps perfectible<br>Profil encore en construction</p>
   </div>
+
 </div>
 
   <div class="values-section">
     <h1 style="text-align: center; color: #FFD700; margin-bottom: 40px;">Valeurs acquises</h1>
 
     <div class="value-block">
-      <h2>Créativité</h2>
-      <p>Capacité à créer des solutions nouvelles et originales.</p>
+      <h2>Autonomie</h2>
+      <p>Capacité à gérer seul des missions, à prendre des initiatives en atelier ou sur le terrain.</p>
     </div>
 
     <div class="value-block">
-      <h2>Sérieux</h2>
-      <p>Rigueur dans la gestion de projet, suivi méthodique et professionnalisme.</p>
+      <h2>Bienveillance </h2>
+      <p>Attitude respectueuse et constructive dans les relations de travail, volonté d’aider, favoriser un climat de confiance et de coopération.</p>
     </div>
 
     <div class="value-block">
-      <h2>Bienveillance</h2>
-      <p>Travail en équipe, respect des autres et collaboration positive.</p>
+      <h2>Adaptabilité</h2>
+      <p>Réactivité face aux imprévus et capacité à apprendre rapidement de nouvelles technologies.</p>
     </div>
 
     <div class="value-block">
       <h2>Ambition</h2>
       <p>Volonté constante d’apprendre, d’évoluer et de viser l’excellence.</p>
     </div>
+    
+    <div class="value-block">
+      <h2>Résilience</h2>
+      <p>Capacité à rester motivé face aux difficultés, à apprendre des erreurs et à rebondir rapidement.</p>
+    </div>
   </div>
+
 
   <footer>
     &copy; 2025 Lucas Deneumostier – Tous droits réservés<br>
