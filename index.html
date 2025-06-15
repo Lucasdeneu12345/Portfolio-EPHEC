@@ -70,7 +70,7 @@
     }
     .carousel-track {
       display: inline-flex;
-      animation: scroll 40s linear infinite;
+      animation: scroll 80s linear infinite;
     }
     .carousel-item {
       position: relative;
@@ -85,6 +85,10 @@
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
     }
     .carousel-item .overlay {
+      text-align: center;
+      white-space: normal; /* permet les retours à la ligne */
+      word-wrap: break-word; /* coupe les mots trop longs */
+      line-height: 1.4em; /* améliore la lisibilité */
       position: absolute;
       top: 0;
       left: 0;
